@@ -18,6 +18,7 @@ import {
   Sparkles,
   ChevronRight,
   ExternalLink,
+  Bookmark,
 } from "lucide-react";
 import { SiGithub, SiPython } from "react-icons/si";
 import { Button } from "@/components/ui/button";
@@ -59,10 +60,10 @@ function Hero() {
         >
           <div className="flex items-center justify-center gap-2 mb-8">
             <Badge variant="secondary" className="px-3 py-1 text-xs font-mono" data-testid="badge-version">
-              v0.4.2
+              v0.5.0
             </Badge>
             <Badge variant="secondary" className="px-3 py-1 text-xs" data-testid="badge-tests">
-              429 tests passing
+              479 tests passing
             </Badge>
             <Badge variant="secondary" className="px-3 py-1 text-xs" data-testid="badge-license">
               MIT License
@@ -135,7 +136,7 @@ function Hero() {
               { type: "prompt", text: "$ claude mcp add --scope user --transport stdio kindex -- kin-mcp" },
               { type: "prompt", text: "$ kin init" },
               { type: "blank", text: "" },
-              { type: "output", text: "Kindex initialized. 13 MCP tools available." },
+              { type: "output", text: "Kindex initialized. 16 MCP tools available." },
             ]}
             copyText="pip install kindex[mcp]
 claude mcp add --scope user --transport stdio kindex -- kin-mcp
@@ -189,6 +190,12 @@ const features = [
     title: "Cache-Optimized LLM",
     description: "Three-tier prompt architecture with Anthropic prompt caching. Stable knowledge cached at 10% cost. Only the question pays full price.",
     accent: "text-cyan-500 dark:text-cyan-400",
+  },
+  {
+    icon: Bookmark,
+    title: "Session Tags",
+    description: "Named work context handles that replace resume files. Track focus, remaining items, and topic segments. Resume seamlessly in new sessions.",
+    accent: "text-indigo-500 dark:text-indigo-400",
   },
 ];
 
@@ -490,7 +497,7 @@ function InstallSection() {
             <TabsContent value="claude-plugin">
               <div className="space-y-4">
                 <p className="text-sm text-muted-foreground">
-                  Two commands. Zero configuration. Claude Code gets 13 native tools instantly.
+                  Two commands. Zero configuration. Claude Code gets 16 native tools instantly.
                 </p>
                 <TerminalBlock
                   title="Claude Code Plugin"
@@ -500,9 +507,10 @@ function InstallSection() {
                     { type: "prompt", text: "$ kin init" },
                     { type: "blank", text: "" },
                     { type: "output", text: "Kindex initialized. Knowledge graph ready." },
-                    { type: "output", text: "13 MCP tools available:" },
+                    { type: "output", text: "16 MCP tools available:" },
                     { type: "output", text: "  search, add, context, show, ask, learn, ingest," },
-                    { type: "output", text: "  link, list_nodes, status, suggest, graph_stats, changelog" },
+                    { type: "output", text: "  link, list_nodes, status, suggest, graph_stats," },
+                    { type: "output", text: "  changelog, tag_start, tag_update, tag_resume" },
                   ]}
                 />
               </div>
@@ -532,7 +540,7 @@ function InstallSection() {
             <TabsContent value="cli">
               <div className="space-y-4">
                 <p className="text-sm text-muted-foreground">
-                  Standalone CLI with 42 commands. Add LLM-powered extraction for richer knowledge capture.
+                  Standalone CLI with 43 commands. Add LLM-powered extraction for richer knowledge capture.
                 </p>
                 <TerminalBlock
                   title="CLI Installation"
@@ -574,6 +582,9 @@ function CommandsSection() {
     { name: "graph_stats", desc: "Density, components, degree distribution" },
     { name: "changelog", desc: "What changed, by whom, when" },
     { name: "ingest", desc: "Ingest from GitHub, git, files, sessions" },
+    { name: "tag_start", desc: "Start a named session tag for work context" },
+    { name: "tag_update", desc: "Update, segment, pause, or end a session tag" },
+    { name: "tag_resume", desc: "Resume a session with full context injection" },
   ];
 
   const cliGroups = [
@@ -606,6 +617,7 @@ function CommandsSection() {
         { name: "checkpoint", desc: "Pre-flight checks" },
         { name: "changelog", desc: "Activity history" },
         { name: "git-hook", desc: "Install/uninstall hooks" },
+        { name: "tag", desc: "Session tags: start, resume, segment" },
       ],
     },
   ];
@@ -618,7 +630,7 @@ function CommandsSection() {
             Tools & Commands
           </Badge>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4" data-testid="text-commands-title">
-            13 MCP tools. 42 CLI commands.
+            16 MCP tools. 43 CLI commands.
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-lg">
             Comprehensive control over your knowledge graph, from both AI-assisted and manual workflows.

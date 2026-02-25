@@ -4,7 +4,7 @@ The [kindex.tools](https://kindex.tools) website — marketing and documentation
 
 ## About Kindex
 
-Kindex is the memory layer Claude Code doesn't have. A persistent knowledge graph for AI-assisted workflows with 13 MCP tools, 42 CLI commands, cache-optimized LLM retrieval, and five context tiers.
+Kindex is the memory layer Claude Code doesn't have. A persistent knowledge graph for AI-assisted workflows with 16 MCP tools, 43 CLI commands, session tags, cache-optimized LLM retrieval, and five context tiers.
 
 - **GitHub**: [jmcentire/kindex](https://github.com/jmcentire/kindex)
 - **PyPI**: [kindex](https://pypi.org/project/kindex/)
