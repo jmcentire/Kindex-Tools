@@ -62,7 +62,7 @@ function Hero() {
               v0.4.2
             </Badge>
             <Badge variant="secondary" className="px-3 py-1 text-xs" data-testid="badge-tests">
-              373 tests passing
+              429 tests passing
             </Badge>
             <Badge variant="secondary" className="px-3 py-1 text-xs" data-testid="badge-license">
               MIT License
@@ -135,7 +135,7 @@ function Hero() {
               { type: "prompt", text: "$ claude mcp add --scope user --transport stdio kindex -- kin-mcp" },
               { type: "prompt", text: "$ kin init" },
               { type: "blank", text: "" },
-              { type: "output", text: "Kindex initialized. 12 MCP tools available." },
+              { type: "output", text: "Kindex initialized. 13 MCP tools available." },
             ]}
             copyText="pip install kindex[mcp]
 claude mcp add --scope user --transport stdio kindex -- kin-mcp
@@ -183,6 +183,12 @@ const features = [
     title: "Git Integration",
     description: "Auto-capture knowledge on commits. Git hooks install with one command. Your codebase history becomes searchable context.",
     accent: "text-pink-500 dark:text-pink-400",
+  },
+  {
+    icon: Clock,
+    title: "Cache-Optimized LLM",
+    description: "Three-tier prompt architecture with Anthropic prompt caching. Stable knowledge cached at 10% cost. Only the question pays full price.",
+    accent: "text-cyan-500 dark:text-cyan-400",
   },
 ];
 
@@ -484,7 +490,7 @@ function InstallSection() {
             <TabsContent value="claude-plugin">
               <div className="space-y-4">
                 <p className="text-sm text-muted-foreground">
-                  Two commands. Zero configuration. Claude Code gets 12 native tools instantly.
+                  Two commands. Zero configuration. Claude Code gets 13 native tools instantly.
                 </p>
                 <TerminalBlock
                   title="Claude Code Plugin"
@@ -494,8 +500,8 @@ function InstallSection() {
                     { type: "prompt", text: "$ kin init" },
                     { type: "blank", text: "" },
                     { type: "output", text: "Kindex initialized. Knowledge graph ready." },
-                    { type: "output", text: "12 MCP tools available:" },
-                    { type: "output", text: "  search, add, context, show, ask, learn," },
+                    { type: "output", text: "13 MCP tools available:" },
+                    { type: "output", text: "  search, add, context, show, ask, learn, ingest," },
                     { type: "output", text: "  link, list_nodes, status, suggest, graph_stats, changelog" },
                   ]}
                 />
@@ -567,6 +573,7 @@ function CommandsSection() {
     { name: "suggest", desc: "AI-powered suggestions for what to capture" },
     { name: "graph_stats", desc: "Density, components, degree distribution" },
     { name: "changelog", desc: "What changed, by whom, when" },
+    { name: "ingest", desc: "Ingest from GitHub, git, files, sessions" },
   ];
 
   const cliGroups = [
@@ -611,7 +618,7 @@ function CommandsSection() {
             Tools & Commands
           </Badge>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4" data-testid="text-commands-title">
-            12 MCP tools. 42 CLI commands.
+            13 MCP tools. 42 CLI commands.
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-lg">
             Comprehensive control over your knowledge graph, from both AI-assisted and manual workflows.
@@ -719,6 +726,16 @@ function ArchitectureSection() {
                 </div>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Hybrid BFS + FTS5 traversal assembles context from graph relationships. Five tiers auto-select based on available token budget for optimal context injection.
+                </p>
+              </Card>
+
+              <Card className="p-5 border-border bg-card" data-testid="card-arch-cache">
+                <div className="flex items-center gap-3 mb-3">
+                  <Clock className="w-5 h-5 text-primary" />
+                  <h3 className="font-semibold">Three-Tier LLM Cache</h3>
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Codebook (stable node index) and query-relevant context are cached via Anthropic prompt caching at 10% cost. Graph edges predict which nodes to pre-cache per topic.
                 </p>
               </Card>
             </div>
