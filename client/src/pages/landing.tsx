@@ -569,14 +569,14 @@ function InstallSection() {
 
 function CommandsSection() {
   const mcpTools = [
-    { name: "search", desc: "Find relevant knowledge by query" },
-    { name: "add", desc: "Add knowledge with type, weight, domain" },
+    { name: "search", desc: "Find relevant knowledge by query (filter by --tags)" },
+    { name: "add", desc: "Add knowledge with type, weight, and tags" },
     { name: "context", desc: "Get tiered context for current session" },
     { name: "show", desc: "Display a specific node's full details" },
     { name: "ask", desc: "Ask questions across your knowledge graph" },
     { name: "learn", desc: "Extract and store knowledge from text" },
     { name: "link", desc: "Create typed edges between nodes" },
-    { name: "list_nodes", desc: "Browse nodes with filters" },
+    { name: "list_nodes", desc: "Browse nodes with filters (type, status, tags, audience)" },
     { name: "status", desc: "Graph overview and health" },
     { name: "suggest", desc: "AI-powered suggestions for what to capture" },
     { name: "graph_stats", desc: "Density, components, degree distribution" },
@@ -591,8 +591,8 @@ function CommandsSection() {
     {
       title: "Knowledge",
       commands: [
-        { name: "add", desc: "Add a knowledge node" },
-        { name: "search", desc: "Search the graph" },
+        { name: "add", desc: "Add a knowledge node (--tags, --type)" },
+        { name: "search", desc: "Search the graph (--tags, --mine)" },
         { name: "show", desc: "Show node details" },
         { name: "ask", desc: "Ask questions across nodes" },
         { name: "learn", desc: "Extract knowledge from text" },
@@ -604,7 +604,7 @@ function CommandsSection() {
       commands: [
         { name: "link", desc: "Create edges between nodes" },
         { name: "graph stats", desc: "Graph metrics" },
-        { name: "list", desc: "List and filter nodes" },
+        { name: "list", desc: "List and filter nodes (--tags, --audience)" },
         { name: "context", desc: "Get tiered context output" },
       ],
     },
