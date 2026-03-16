@@ -581,7 +581,7 @@ function CommandsSection() {
     { name: "suggest", desc: "AI-powered suggestions for what to capture" },
     { name: "graph_stats", desc: "Density, components, degree distribution" },
     { name: "changelog", desc: "What changed, by whom, when" },
-    { name: "ingest", desc: "Ingest from GitHub, git, files, sessions" },
+    { name: "ingest", desc: "Ingest from GitHub, git, files, sessions, code (ctags/cscope/tree-sitter)" },
     { name: "tag_start", desc: "Start a named session tag for work context" },
     { name: "tag_update", desc: "Update, segment, pause, or end a session tag" },
     { name: "tag_resume", desc: "Resume a session with full context injection" },
@@ -596,7 +596,7 @@ function CommandsSection() {
         { name: "show", desc: "Show node details" },
         { name: "ask", desc: "Ask questions across nodes" },
         { name: "learn", desc: "Extract knowledge from text" },
-        { name: "ingest", desc: "Bulk import from files" },
+        { name: "ingest", desc: "Bulk import from files, code repos, GitHub" },
       ],
     },
     {
