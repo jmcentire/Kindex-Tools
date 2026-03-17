@@ -19,6 +19,9 @@ import {
   ChevronRight,
   ExternalLink,
   Bookmark,
+  Bell,
+  CheckSquare,
+  Eye,
 } from "lucide-react";
 import { SiGithub, SiPython } from "react-icons/si";
 import { Button } from "@/components/ui/button";
@@ -60,10 +63,10 @@ function Hero() {
         >
           <div className="flex items-center justify-center gap-2 mb-8">
             <Badge variant="secondary" className="px-3 py-1 text-xs font-mono" data-testid="badge-version">
-              v0.5.0
+              v0.10.0
             </Badge>
             <Badge variant="secondary" className="px-3 py-1 text-xs" data-testid="badge-tests">
-              479 tests passing
+              930 tests passing
             </Badge>
             <Badge variant="secondary" className="px-3 py-1 text-xs" data-testid="badge-license">
               MIT License
@@ -136,7 +139,7 @@ function Hero() {
               { type: "prompt", text: "$ claude mcp add --scope user --transport stdio kindex -- kin-mcp" },
               { type: "prompt", text: "$ kin init" },
               { type: "blank", text: "" },
-              { type: "output", text: "Kindex initialized. 16 MCP tools available." },
+              { type: "output", text: "Kindex initialized. 30 MCP tools available." },
             ]}
             copyText="pip install kindex[mcp]
 claude mcp add --scope user --transport stdio kindex -- kin-mcp
@@ -196,6 +199,24 @@ const features = [
     title: "Session Tags",
     description: "Named work context handles that replace resume files. Track focus, remaining items, and topic segments. Resume seamlessly in new sessions.",
     accent: "text-indigo-500 dark:text-indigo-400",
+  },
+  {
+    icon: CheckSquare,
+    title: "Task Management",
+    description: "Actionable work items linked to graph concepts. Tasks surface contextually via graph proximity. Priority, status, and completion tracking built in.",
+    accent: "text-emerald-500 dark:text-emerald-400",
+  },
+  {
+    icon: Bell,
+    title: "Reminders",
+    description: "Time-based triggers with shell commands or Claude instructions. Natural language scheduling. Snooze, execute, or complete. Fires at session start.",
+    accent: "text-red-500 dark:text-red-400",
+  },
+  {
+    icon: Eye,
+    title: "Watches",
+    description: "Ongoing attention flags for flaky tests, unstable APIs, tech debt. Set owner and expiry. Watches surface in every session's context automatically.",
+    accent: "text-amber-500 dark:text-amber-400",
   },
 ];
 
@@ -497,7 +518,7 @@ function InstallSection() {
             <TabsContent value="claude-plugin">
               <div className="space-y-4">
                 <p className="text-sm text-muted-foreground">
-                  Two commands. Zero configuration. Claude Code gets 16 native tools instantly.
+                  Two commands. Zero configuration. Claude Code gets 30 native tools instantly.
                 </p>
                 <TerminalBlock
                   title="Claude Code Plugin"
@@ -507,10 +528,15 @@ function InstallSection() {
                     { type: "prompt", text: "$ kin init" },
                     { type: "blank", text: "" },
                     { type: "output", text: "Kindex initialized. Knowledge graph ready." },
-                    { type: "output", text: "16 MCP tools available:" },
+                    { type: "output", text: "30 MCP tools available:" },
                     { type: "output", text: "  search, add, context, show, ask, learn, ingest," },
                     { type: "output", text: "  link, list_nodes, status, suggest, graph_stats," },
-                    { type: "output", text: "  changelog, tag_start, tag_update, tag_resume" },
+                    { type: "output", text: "  graph_heal, graph_merge, changelog," },
+                    { type: "output", text: "  tag_start, tag_update, tag_resume," },
+                    { type: "output", text: "  task_add, task_list, task_done," },
+                    { type: "output", text: "  remind_create, remind_list, remind_snooze," },
+                    { type: "output", text: "  remind_done, remind_check, remind_exec," },
+                    { type: "output", text: "  watch_add, watch_list, watch_resolve" },
                   ]}
                 />
               </div>
@@ -540,7 +566,7 @@ function InstallSection() {
             <TabsContent value="cli">
               <div className="space-y-4">
                 <p className="text-sm text-muted-foreground">
-                  Standalone CLI with 43 commands. Add LLM-powered extraction for richer knowledge capture.
+                  Standalone CLI with 49 commands. Add LLM-powered extraction for richer knowledge capture.
                 </p>
                 <TerminalBlock
                   title="CLI Installation"
@@ -580,11 +606,25 @@ function CommandsSection() {
     { name: "status", desc: "Graph overview and health" },
     { name: "suggest", desc: "AI-powered suggestions for what to capture" },
     { name: "graph_stats", desc: "Density, components, degree distribution" },
+    { name: "graph_heal", desc: "Diagnose graph health: orphans, bridges, fading nodes" },
+    { name: "graph_merge", desc: "Merge duplicate nodes, moving edges and archiving source" },
     { name: "changelog", desc: "What changed, by whom, when" },
     { name: "ingest", desc: "Ingest from GitHub, git, files, sessions, code (ctags/cscope/tree-sitter)" },
     { name: "tag_start", desc: "Start a named session tag for work context" },
     { name: "tag_update", desc: "Update, segment, pause, or end a session tag" },
     { name: "tag_resume", desc: "Resume a session with full context injection" },
+    { name: "task_add", desc: "Create actionable work items linked to concepts" },
+    { name: "task_list", desc: "List and filter tasks by status and priority" },
+    { name: "task_done", desc: "Mark tasks completed with optional summary" },
+    { name: "remind_create", desc: "Create time-based reminders with natural language parsing" },
+    { name: "remind_list", desc: "List all active reminders" },
+    { name: "remind_snooze", desc: "Defer a reminder to a later time" },
+    { name: "remind_done", desc: "Mark a reminder as completed" },
+    { name: "remind_check", desc: "Run the reminder check cycle for due items" },
+    { name: "remind_exec", desc: "Manually trigger a reminder's action" },
+    { name: "watch_add", desc: "Flag items needing ongoing attention (flaky tests, tech debt)" },
+    { name: "watch_list", desc: "List active watches with status" },
+    { name: "watch_resolve", desc: "Archive a watch when the issue is resolved" },
   ];
 
   const cliGroups = [
@@ -603,7 +643,9 @@ function CommandsSection() {
       title: "Graph",
       commands: [
         { name: "link", desc: "Create edges between nodes" },
-        { name: "graph stats", desc: "Graph metrics" },
+        { name: "graph stats", desc: "Graph metrics and health" },
+        { name: "graph heal", desc: "Find orphans, bridges, fading nodes" },
+        { name: "graph merge", desc: "Merge duplicate nodes" },
         { name: "list", desc: "List and filter nodes (--tags, --audience)" },
         { name: "context", desc: "Get tiered context output" },
       ],
@@ -620,6 +662,17 @@ function CommandsSection() {
         { name: "tag", desc: "Session tags: start, resume, segment" },
       ],
     },
+    {
+      title: "Task & Remind",
+      commands: [
+        { name: "task add", desc: "Create work items linked to concepts" },
+        { name: "task list", desc: "List tasks by status/priority" },
+        { name: "task done", desc: "Complete tasks" },
+        { name: "remind", desc: "Time-based triggers with actions" },
+        { name: "watch add", desc: "Monitor flaky tests, unstable APIs" },
+        { name: "watch resolve", desc: "Archive resolved watches" },
+      ],
+    },
   ];
 
   return (
@@ -630,7 +683,7 @@ function CommandsSection() {
             Tools & Commands
           </Badge>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4" data-testid="text-commands-title">
-            16 MCP tools. 43 CLI commands.
+            30 MCP tools. 49 CLI commands.
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-lg">
             Comprehensive control over your knowledge graph, from both AI-assisted and manual workflows.
@@ -663,7 +716,7 @@ function CommandsSection() {
             </TabsContent>
 
             <TabsContent value="cli">
-              <div className="grid md:grid-cols-3 gap-6">
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {cliGroups.map((group) => (
                   <div key={group.title}>
                     <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">
