@@ -22,6 +22,7 @@ import {
   Bell,
   CheckSquare,
   Eye,
+  Palette,
 } from "lucide-react";
 import { SiGithub, SiPython } from "react-icons/si";
 import { Button } from "@/components/ui/button";
@@ -217,6 +218,12 @@ const features = [
     title: "Watches",
     description: "Ongoing attention flags for flaky tests, unstable APIs, tech debt. Set owner and expiry. Watches surface in every session's context automatically.",
     accent: "text-amber-500 dark:text-amber-400",
+  },
+  {
+    icon: Palette,
+    title: "Conversation Modes",
+    description: "Research-backed priming artifacts that induce processing modes in AI sessions. Five built-in modes. Create custom modes from sessions and export for team sharing.",
+    accent: "text-pink-500 dark:text-pink-400",
   },
 ];
 
@@ -528,7 +535,7 @@ function InstallSection() {
                     { type: "prompt", text: "$ kin init" },
                     { type: "blank", text: "" },
                     { type: "output", text: "Kindex initialized. Knowledge graph ready." },
-                    { type: "output", text: "30 MCP tools available:" },
+                    { type: "output", text: "37 MCP tools available:" },
                     { type: "output", text: "  search, add, context, show, ask, learn, ingest," },
                     { type: "output", text: "  link, list_nodes, status, suggest, graph_stats," },
                     { type: "output", text: "  graph_heal, graph_merge, changelog," },
@@ -536,7 +543,9 @@ function InstallSection() {
                     { type: "output", text: "  task_add, task_list, task_done," },
                     { type: "output", text: "  remind_create, remind_list, remind_snooze," },
                     { type: "output", text: "  remind_done, remind_check, remind_exec," },
-                    { type: "output", text: "  watch_add, watch_list, watch_resolve" },
+                    { type: "output", text: "  watch_add, watch_list, watch_resolve," },
+                    { type: "output", text: "  mode_activate, mode_list, mode_show," },
+                    { type: "output", text: "  mode_create, mode_export, mode_import, mode_seed" },
                   ]}
                 />
               </div>
@@ -622,6 +631,13 @@ function CommandsSection() {
     { name: "remind_done", desc: "Mark a reminder as completed" },
     { name: "remind_check", desc: "Run the reminder check cycle for due items" },
     { name: "remind_exec", desc: "Manually trigger a reminder's action" },
+    { name: "mode_activate", desc: "Activate a conversation mode — returns priming artifact" },
+    { name: "mode_list", desc: "List available modes (built-in and custom)" },
+    { name: "mode_show", desc: "Show mode details: primer, boundary, permissions" },
+    { name: "mode_create", desc: "Create a custom mode from primer/boundary/permissions" },
+    { name: "mode_export", desc: "Export a mode as PII-free portable artifact" },
+    { name: "mode_import", desc: "Import a mode from a portable artifact" },
+    { name: "mode_seed", desc: "Seed the five default conversation modes" },
     { name: "watch_add", desc: "Flag items needing ongoing attention (flaky tests, tech debt)" },
     { name: "watch_list", desc: "List active watches with status" },
     { name: "watch_resolve", desc: "Archive a watch when the issue is resolved" },
