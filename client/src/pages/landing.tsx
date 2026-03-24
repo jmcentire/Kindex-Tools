@@ -23,6 +23,9 @@ import {
   CheckSquare,
   Eye,
   Palette,
+  Lock,
+  Microscope,
+  Globe,
 } from "lucide-react";
 import { SiGithub, SiPython } from "react-icons/si";
 import { Button } from "@/components/ui/button";
@@ -64,10 +67,10 @@ function Hero() {
         >
           <div className="flex items-center justify-center gap-2 mb-8">
             <Badge variant="secondary" className="px-3 py-1 text-xs font-mono" data-testid="badge-version">
-              v0.10.0
+              v0.12.0
             </Badge>
             <Badge variant="secondary" className="px-3 py-1 text-xs" data-testid="badge-tests">
-              930 tests passing
+              930+ tests passing
             </Badge>
             <Badge variant="secondary" className="px-3 py-1 text-xs" data-testid="badge-license">
               MIT License
@@ -140,7 +143,7 @@ function Hero() {
               { type: "prompt", text: "$ claude mcp add --scope user --transport stdio kindex -- kin-mcp" },
               { type: "prompt", text: "$ kin init" },
               { type: "blank", text: "" },
-              { type: "output", text: "Kindex initialized. 30 MCP tools available." },
+              { type: "output", text: "Kindex initialized. 37 MCP tools available." },
             ]}
             copyText="pip install kindex[mcp]
 claude mcp add --scope user --transport stdio kindex -- kin-mcp
@@ -258,6 +261,64 @@ function FeaturesSection() {
               </Card>
             </AnimatedSection>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PolicyGovernedSection() {
+  return (
+    <section className="py-24 relative">
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/3 left-0 w-[400px] h-[400px] rounded-full bg-yellow-500/5 dark:bg-yellow-500/10 blur-3xl" />
+      </div>
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <AnimatedSection>
+            <Badge variant="secondary" className="mb-4 text-xs font-mono" data-testid="badge-policy">
+              Security
+            </Badge>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4" data-testid="text-policy-title">
+              Your knowledge graph is protected
+            </h2>
+            <p className="text-muted-foreground text-lg mb-6">
+              signet-eval gates every tool call with deterministic policy enforcement. Define rules for what your AI can and can't do with your knowledge.
+            </p>
+            <p className="text-sm text-muted-foreground/70 mb-6">
+              signet-eval evaluates in ~2&micro;s. Zero runtime overhead.
+            </p>
+            <a
+              href="https://signet.tools"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-[#c9a227] hover:text-[#d4af37] transition-colors"
+              data-testid="link-signet-policy"
+            >
+              Learn more at signet.tools <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.15}>
+            <TerminalBlock
+              title="policy.yaml"
+              lines={[
+                { type: "output", text: "rules:" },
+                { type: "output", text: "  - name: protect-knowledge-graph" },
+                { type: "output", text: "    action: confirm" },
+                { type: "output", text: "    conditions:" },
+                { type: "output", text: "      - type: tool_name" },
+                { type: "output", text: "        values: [Bash, Write]" },
+                { type: "output", text: '    message: "Modifying files requires confirmation"' },
+                { type: "blank", text: "" },
+                { type: "output", text: "  - name: allow-kindex-tools" },
+                { type: "output", text: "    action: allow" },
+                { type: "output", text: "    conditions:" },
+                { type: "output", text: "      - type: mcp_server" },
+                { type: "output", text: "        values: [kindex]" },
+              ]}
+            />
+          </AnimatedSection>
         </div>
       </div>
     </section>
@@ -495,6 +556,73 @@ function UseCasesSection() {
   );
 }
 
+function StackIntegrationSection() {
+  const integrations = [
+    {
+      icon: Shield,
+      name: "Sentinel",
+      description: "Fixer agents query Kindex for prior incident patterns before attempting remediation",
+    },
+    {
+      icon: Target,
+      name: "Pact",
+      description: "Code generation agents query for architectural decisions and constraints",
+    },
+    {
+      icon: BookOpen,
+      name: "Chronicler",
+      description: "Records operational events as queryable knowledge that enriches future sessions",
+    },
+  ];
+
+  return (
+    <section className="py-24 relative">
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] rounded-full bg-emerald-500/5 dark:bg-emerald-500/10 blur-3xl" />
+      </div>
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <AnimatedSection className="text-center mb-16">
+          <Badge variant="secondary" className="mb-4 text-xs font-mono" data-testid="badge-stack">
+            Ecosystem
+          </Badge>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4" data-testid="text-stack-title">
+            The shared memory of your entire agent ecosystem
+          </h2>
+          <p className="text-muted-foreground max-w-xl mx-auto text-lg">
+            Kindex isn't just for you. Every agent in the Exemplar stack queries the same knowledge graph.
+          </p>
+        </AnimatedSection>
+
+        <div className="grid md:grid-cols-3 gap-6 mb-10">
+          {integrations.map((item, i) => (
+            <AnimatedSection key={item.name} delay={i * 0.1}>
+              <Card className="p-6 h-full border-border bg-card hover-elevate" data-testid={`card-integration-${item.name.toLowerCase()}`}>
+                <item.icon className="w-6 h-6 mb-4 text-emerald-500 dark:text-emerald-400" />
+                <h3 className="text-base font-semibold mb-2">{item.name}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {item.description}
+                </p>
+              </Card>
+            </AnimatedSection>
+          ))}
+        </div>
+
+        <AnimatedSection delay={0.3} className="text-center">
+          <a
+            href="https://exemplar.tools"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground hover:text-primary transition-colors"
+            data-testid="link-exemplar-stack"
+          >
+            See the full 18-project stack <ArrowRight className="w-3.5 h-3.5" />
+          </a>
+        </AnimatedSection>
+      </div>
+    </section>
+  );
+}
+
 function InstallSection() {
   return (
     <section id="install" className="py-24 relative">
@@ -525,7 +653,7 @@ function InstallSection() {
             <TabsContent value="claude-plugin">
               <div className="space-y-4">
                 <p className="text-sm text-muted-foreground">
-                  Two commands. Zero configuration. Claude Code gets 30 native tools instantly.
+                  Two commands. Zero configuration. Claude Code gets 37 native tools instantly.
                 </p>
                 <TerminalBlock
                   title="Claude Code Plugin"
@@ -699,7 +827,7 @@ function CommandsSection() {
             Tools & Commands
           </Badge>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4" data-testid="text-commands-title">
-            30 MCP tools. 49 CLI commands.
+            37 MCP tools. 49 CLI commands.
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-lg">
             Comprehensive control over your knowledge graph, from both AI-assisted and manual workflows.
@@ -857,6 +985,142 @@ function ArchitectureSection() {
   );
 }
 
+function ResearchFoundationSection() {
+  const papers = [
+    {
+      title: "Structural Compression Theory",
+      description: "The monograph establishing the theoretical foundation for knowledge graph compression and context tiering.",
+      href: "https://perardua.dev/books",
+      icon: BookOpen,
+    },
+    {
+      title: "Ambient Structure Discovery",
+      description: "Stigmergy-based pattern discovery — how agents find and reinforce structural patterns in knowledge without central coordination.",
+      href: "https://perardua.dev/research/ot-5",
+      icon: Microscope,
+    },
+  ];
+
+  return (
+    <section className="py-24 relative">
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-indigo-500/5 dark:bg-indigo-500/10 blur-3xl" />
+      </div>
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <AnimatedSection className="text-center mb-16">
+          <Badge variant="secondary" className="mb-4 text-xs font-mono" data-testid="badge-research">
+            Research
+          </Badge>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4" data-testid="text-research-title">
+            Built on peer-reviewed foundations
+          </h2>
+        </AnimatedSection>
+
+        <div className="grid md:grid-cols-2 gap-6 mb-10">
+          {papers.map((paper, i) => (
+            <AnimatedSection key={paper.title} delay={i * 0.1}>
+              <a
+                href={paper.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block group"
+                data-testid={`card-paper-${i}`}
+              >
+                <Card className="p-6 h-full border-border bg-card hover-elevate transition-colors group-hover:border-indigo-500/30">
+                  <paper.icon className="w-6 h-6 mb-4 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-base font-semibold mb-2 group-hover:text-primary transition-colors">
+                    {paper.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                    {paper.description}
+                  </p>
+                  <span className="inline-flex items-center gap-1 text-xs text-muted-foreground/70 group-hover:text-primary transition-colors">
+                    Read on perardua.dev <ExternalLink className="w-3 h-3" />
+                  </span>
+                </Card>
+              </a>
+            </AnimatedSection>
+          ))}
+        </div>
+
+        <AnimatedSection delay={0.2} className="text-center">
+          <a
+            href="https://perardua.dev/research"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground hover:text-primary transition-colors"
+            data-testid="link-all-papers"
+          >
+            Read all 40 papers <ArrowRight className="w-3.5 h-3.5" />
+          </a>
+        </AnimatedSection>
+      </div>
+    </section>
+  );
+}
+
+function PartOfSomethingBiggerSection() {
+  return (
+    <section className="py-24 relative">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <AnimatedSection className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight" data-testid="text-bigger-title">
+            Part of something bigger
+          </h2>
+        </AnimatedSection>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          <AnimatedSection>
+            <a
+              href="https://exemplar.tools"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block group"
+              data-testid="card-exemplar"
+            >
+              <Card className="p-6 h-full border-emerald-500/20 bg-card hover-elevate transition-colors group-hover:border-emerald-500/40">
+                <Globe className="w-6 h-6 mb-4 text-emerald-500 dark:text-emerald-400" />
+                <h3 className="text-lg font-semibold mb-2 group-hover:text-emerald-500 transition-colors">
+                  exemplar.tools
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                  Kindex is the intelligence layer of the Exemplar stack &mdash; the shared memory that every agent reads and writes.
+                </p>
+                <span className="inline-flex items-center gap-1 text-xs text-muted-foreground/70 group-hover:text-emerald-500 transition-colors">
+                  Explore the stack <ExternalLink className="w-3 h-3" />
+                </span>
+              </Card>
+            </a>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.1}>
+            <a
+              href="https://signet.tools"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block group"
+              data-testid="card-signet"
+            >
+              <Card className="p-6 h-full border-[#c9a227]/20 bg-card hover-elevate transition-colors group-hover:border-[#c9a227]/40">
+                <Lock className="w-6 h-6 mb-4 text-[#c9a227]" />
+                <h3 className="text-lg font-semibold mb-2 group-hover:text-[#c9a227] transition-colors">
+                  signet.tools
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                  Your knowledge is cryptographically protected. Policy enforcement, credential management, and audit trails for every tool call.
+                </p>
+                <span className="inline-flex items-center gap-1 text-xs text-muted-foreground/70 group-hover:text-[#c9a227] transition-colors">
+                  Learn about Signet <ExternalLink className="w-3 h-3" />
+                </span>
+              </Card>
+            </a>
+          </AnimatedSection>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function CTASection() {
   return (
     <section className="py-24 relative">
@@ -940,11 +1204,26 @@ function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold mb-3">Install</h4>
+            <h4 className="text-sm font-semibold mb-3">Sites</h4>
             <ul className="space-y-2">
-              <li className="font-mono text-xs text-muted-foreground">pip install kindex</li>
-              <li className="font-mono text-xs text-muted-foreground">pip install kindex[mcp]</li>
-              <li className="font-mono text-xs text-muted-foreground">pip install kindex[all]</li>
+              <li>
+                <a href="https://exemplar.tools" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1">
+                  exemplar.tools <ExternalLink className="w-3 h-3" />
+                </a>
+              </li>
+              <li>
+                <a href="https://signet.tools" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-[#c9a227] transition-colors inline-flex items-center gap-1">
+                  signet.tools <ExternalLink className="w-3 h-3" />
+                </a>
+              </li>
+              <li>
+                <span className="text-sm text-foreground">kindex.tools</span>
+              </li>
+              <li>
+                <a href="https://perardua.dev" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1">
+                  perardua.dev <ExternalLink className="w-3 h-3" />
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -953,9 +1232,12 @@ function Footer() {
           <p className="text-xs text-muted-foreground">
             MIT License. Built by <a href="https://github.com/jmcentire" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">jmcentire</a>.
           </p>
-          <div className="flex items-center gap-2">
-            <SiPython className="w-4 h-4 text-muted-foreground" />
-            <span className="text-xs text-muted-foreground">Python 3.10+</span>
+          <div className="flex items-center gap-4">
+            <span className="text-xs text-muted-foreground/60">Part of the <a href="https://exemplar.tools" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Exemplar</a> stack</span>
+            <div className="flex items-center gap-2">
+              <SiPython className="w-4 h-4 text-muted-foreground" />
+              <span className="text-xs text-muted-foreground">Python 3.10+</span>
+            </div>
           </div>
         </div>
       </div>
@@ -969,12 +1251,16 @@ export default function Landing() {
       <Navigation />
       <Hero />
       <FeaturesSection />
+      <PolicyGovernedSection />
       <ContextTiersSection />
       <ComparisonSection />
       <UseCasesSection />
+      <StackIntegrationSection />
       <InstallSection />
       <CommandsSection />
       <ArchitectureSection />
+      <ResearchFoundationSection />
+      <PartOfSomethingBiggerSection />
       <CTASection />
       <Footer />
     </div>

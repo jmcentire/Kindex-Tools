@@ -13,6 +13,12 @@ const navLinks = [
   { label: "Commands", href: "#commands" },
 ];
 
+const sisterSites = [
+  { label: "exemplar.tools", href: "https://exemplar.tools", hoverClass: "hover:text-white" },
+  { label: "signet.tools", href: "https://signet.tools", hoverClass: "hover:text-[#c9a227]" },
+  { label: "perardua.dev", href: "https://perardua.dev", hoverClass: "hover:text-foreground" },
+];
+
 export function Navigation() {
   const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
@@ -51,6 +57,19 @@ export function Navigation() {
                 className="px-3 py-2 text-sm text-muted-foreground transition-colors rounded-md"
               >
                 {link.label}
+              </a>
+            ))}
+            <span className="w-px h-4 bg-border mx-1" />
+            {sisterSites.map((site) => (
+              <a
+                key={site.href}
+                href={site.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid={`link-nav-${site.label}`}
+                className={`px-2 py-1 font-mono text-xs text-muted-foreground/60 transition-colors ${site.hoverClass}`}
+              >
+                {site.label}
               </a>
             ))}
           </div>
@@ -113,6 +132,22 @@ export function Navigation() {
                   {link.label}
                 </a>
               ))}
+              <div className="border-t border-border mt-2 pt-2">
+                {sisterSites.map((site) => (
+                  <a
+                    key={site.href}
+                    href={site.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMobileOpen(false)}
+                    data-testid={`link-mobile-${site.label}`}
+                    className={`px-3 py-2 font-mono text-xs text-muted-foreground/60 transition-colors block ${site.hoverClass}`}
+                    role="menuitem"
+                  >
+                    {site.label}
+                  </a>
+                ))}
+              </div>
             </div>
           </motion.div>
         )}

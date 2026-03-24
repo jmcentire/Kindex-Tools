@@ -1,0 +1,31 @@
+name: kindex-tools
+audience: public
+description: >
+  Marketing and documentation website for the Kindex knowledge graph
+  platform. React + TypeScript + Tailwind, deployed at kindex.tools.
+
+domains:
+  - marketing
+  - documentation
+  - web
+  - react
+  - kindex
+
+voice:
+  tone: clear, developer-facing, benefit-led
+  principles:
+    - Lead with what kindex does for the developer, not how it works
+    - Documentation examples are copy-pasteable
+    - Design is clean and fast-loading
+  anti-patterns:
+    - Marketing fluff without concrete examples
+    - Heavy JavaScript bundles for a content site
+
+standards:
+  code_review:
+    - TypeScript strict mode
+    - Tailwind for styling
+    - Vite for builds
+
+connects_to:
+  - kindex
