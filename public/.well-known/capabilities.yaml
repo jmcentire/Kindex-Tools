@@ -1,0 +1,39 @@
+# Capabilities Manifest — kindex.tools
+# Spec: https://perardua.dev/specs/capabilities
+
+manifest:
+  spec: "0.1"
+  updated: "2026-03-26T00:00:00Z"
+  canonical: "https://perardua.dev/specs/capabilities"
+
+domain:
+  name: "Kindex"
+  url: "https://kindex.tools"
+  description: >
+    Persistent knowledge graph for Claude Code. Remembers across sessions.
+    Hybrid FTS5 + graph search, 30+ MCP tools, dream-cycle consolidation,
+    modes, tasks, reminders, and watch items. pip install kindex.
+  contact: "jmc@cageandmirror.com"
+  tos: "/tos"
+  privacy: "/privacy"
+
+read:
+  - id: landing
+    path: /
+    description: "Product overview: features, installation, commands, context tiers, use cases"
+    auth: public
+    response:
+      format: text/html
+    cache:
+      ttl: 86400
+      signal: stable
+
+  - id: privacy
+    path: /privacy/
+    description: "Privacy policy — local-only architecture, zero data collection"
+    auth: public
+    response:
+      format: text/html
+    cache:
+      ttl: 604800
+      signal: stable
