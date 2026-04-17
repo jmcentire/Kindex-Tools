@@ -1,0 +1,81 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/server-card.json",
+  "serverInfo": {
+    "name": "kindex",
+    "version": "0.17.0",
+    "title": "Kindex",
+    "description": "Persistent knowledge graph for AI-assisted workflows. Hybrid FTS5 + graph retrieval, context tiers, operational guardrails (constraints, directives, watches, checkpoints), session tags, reminders, dream-cycle consolidation, and .kin inheritance.",
+    "homepage": "https://kindex.tools",
+    "repository": "https://github.com/jmcentire/kindex",
+    "documentation": "https://kindex.tools/llms-full.txt",
+    "license": "MIT",
+    "vendor": {
+      "name": "Jeremy McEntire",
+      "url": "https://github.com/jmcentire"
+    }
+  },
+  "transport": {
+    "type": "stdio",
+    "note": "Kindex runs locally over stdio. Install via `pip install kindex[mcp]` and register with `claude mcp add --scope user --transport stdio kindex -- kin-mcp`. No public HTTP transport is exposed."
+  },
+  "install": {
+    "pypi": "kindex[mcp]",
+    "command": "kin-mcp",
+    "config": {
+      "mcpServers": {
+        "kindex": {
+          "command": "kin-mcp"
+        }
+      }
+    }
+  },
+  "capabilities": {
+    "tools": [
+      {"name": "search", "description": "Hybrid FTS5 + graph search over the knowledge graph."},
+      {"name": "add", "description": "Capture a node with type (concept, decision, constraint, directive, question, skill, watch, checkpoint)."},
+      {"name": "context", "description": "Return a tier-budgeted context block for injection."},
+      {"name": "show", "description": "Full details of a node including edges and provenance."},
+      {"name": "ask", "description": "Classified question answering with LLM or context-only mode."},
+      {"name": "learn", "description": "Bulk-extract concepts from long text."},
+      {"name": "link", "description": "Create a weighted edge between two nodes."},
+      {"name": "list_nodes", "description": "List nodes filtered by type, tag, audience, or owner."},
+      {"name": "status", "description": "Graph health and active operational nodes."},
+      {"name": "suggest", "description": "Bridge-opportunity suggestions between disconnected clusters."},
+      {"name": "graph_stats", "description": "Nodes, edges, density, components, average degree."},
+      {"name": "graph_merge", "description": "Merge two nodes with edge reconciliation."},
+      {"name": "dream", "description": "Consolidation cycle: fuzzy dedup, suggestion auto-apply, domain edge strengthening."},
+      {"name": "changelog", "description": "What changed in the graph over a time window."},
+      {"name": "ingest", "description": "Ingest from projects, sessions, files, commits, github, linear, or code."},
+      {"name": "tag_start", "description": "Start a named session tag."},
+      {"name": "tag_update", "description": "Update the active session tag (focus, remaining, segment, end)."},
+      {"name": "tag_resume", "description": "Resume a previous session tag — returns a context block."},
+      {"name": "task_add", "description": "Create a task linked to related concepts."},
+      {"name": "task_done", "description": "Mark a task complete."},
+      {"name": "task_list", "description": "List open tasks, optionally filtered."},
+      {"name": "watch_add", "description": "Flag something for ongoing attention with owner and expiry."},
+      {"name": "watch_list", "description": "List active watches."},
+      {"name": "watch_resolve", "description": "Resolve a watch."},
+      {"name": "remind_create", "description": "Create a reminder with optional shell action or Claude instructions."},
+      {"name": "remind_list", "description": "List pending reminders."},
+      {"name": "remind_snooze", "description": "Snooze a reminder by duration."},
+      {"name": "remind_done", "description": "Mark a reminder complete."},
+      {"name": "remind_check", "description": "Check for due reminders."},
+      {"name": "remind_exec", "description": "Execute a reminder's action."},
+      {"name": "mode_activate", "description": "Activate a conversation mode — emits the priming artifact."},
+      {"name": "mode_list", "description": "List available modes."},
+      {"name": "mode_show", "description": "Show a mode's primer, boundary, and permissions."},
+      {"name": "mode_create", "description": "Create a new conversation mode."},
+      {"name": "mode_export", "description": "Export a mode (PII-stripped)."},
+      {"name": "mode_import", "description": "Import a mode from JSON."},
+      {"name": "mode_seed", "description": "Seed the five default modes (collaborate, code, create, research, chat)."}
+    ],
+    "resources": [],
+    "prompts": []
+  },
+  "links": {
+    "llms.txt": "https://kindex.tools/llms.txt",
+    "llmsFull": "https://kindex.tools/llms-full.txt",
+    "agentSkills": "https://kindex.tools/.well-known/agent-skills/index.json",
+    "registry": "https://github.com/jmcentire/kindex/blob/main/server.json"
+  }
+}

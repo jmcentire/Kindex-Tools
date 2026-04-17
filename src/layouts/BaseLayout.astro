@@ -68,5 +68,36 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         document.body.classList.add('light');
       }
     </script>
+    <script is:inline>
+      // A6 WebMCP: expose a minimal tool surface to agent-capable browsers
+      // via navigator.modelContext.provideContext({ tools: [...] }).
+      // Safe no-op when the API is unavailable.
+      (function () {
+        try {
+          var mc = navigator && navigator.modelContext;
+          if (mc && typeof mc.provideContext === 'function') {
+            mc.provideContext({
+              tools: [
+                {
+                  name: 'get_mcp_server_info',
+                  description: 'Return Kindex MCP server metadata',
+                  inputSchema: { type: 'object', properties: {} },
+                  execute: async function () {
+                    return {
+                      server: 'kindex',
+                      transport: 'stdio',
+                      install: 'pip install kindex',
+                      server_card: '/.well-known/mcp/server-card.json'
+                    };
+                  }
+                }
+              ]
+            });
+          }
+        } catch (_) {
+          /* no-op */
+        }
+      })();
+    </script>
   </body>
 </html>

@@ -1,0 +1,169 @@
+# Kindex — Full Reference
+
+> The memory layer Claude Code doesn't have. Persistent knowledge graph for AI workflows. MCP server + CLI. Version 0.17.0. MIT licensed.
+
+Kindex does one thing: it knows what you know. It's a persistent knowledge graph for AI-assisted workflows. It indexes your conversations, projects, and intellectual work so that Claude Code never starts a session blind.
+
+Memory plugins capture what happened. Kindex captures what it means and how it connects. Most memory tools are session archives with search. Kindex is a weighted knowledge graph that grows intelligence over time — understanding relationships, surfacing constraints, and managing exactly how much context to inject based on your available token budget.
+
+## Install as Claude Code Plugin
+
+Two commands. Zero configuration.
+
+```
+pip install kindex[mcp]
+claude mcp add --scope user --transport stdio kindex -- kin-mcp
+kin init
+```
+
+Or add `.mcp.json` to any repo for project-scope access:
+
+```
+{ "mcpServers": { "kindex": { "command": "kin-mcp" } } }
+```
+
+## Install as CLI
+
+```
+pip install kindex
+kin init
+```
+
+Optional extras: `kindex[llm]` (Anthropic), `kindex[vectors]` (sqlite-vec), `kindex[reminders]` (dateparser + cronsim), `kindex[all]`.
+
+## MCP Tools (30)
+
+Exposed by `kin-mcp` over stdio:
+
+- **Core**: `search`, `add`, `context`, `show`, `ask`, `learn`, `link`, `list_nodes`, `status`, `suggest`
+- **Graph**: `graph_stats`, `graph_merge`, `dream`, `changelog`, `ingest`
+- **Sessions**: `tag_start`, `tag_update`, `tag_resume`
+- **Tasks**: `task_add`, `task_done`, `task_list`
+- **Watches**: `watch_add`, `watch_list`, `watch_resolve`
+- **Reminders**: `remind_create`, `remind_list`, `remind_snooze`, `remind_done`, `remind_check`, `remind_exec`
+- **Modes**: `mode_activate`, `mode_list`, `mode_show`, `mode_create`, `mode_export`, `mode_import`, `mode_seed`
+
+## Why Kindex
+
+### Context-aware by design
+
+Five context tiers auto-select based on available tokens:
+
+| Tier | Budget | Use Case |
+|------|--------|----------|
+| full | ~4000 tokens | Session start, deep work |
+| abridged | ~1500 tokens | Mid-session reference |
+| summarized | ~750 tokens | Quick orientation |
+| executive | ~200 tokens | Post-compaction re-injection |
+| index | ~100 tokens | Existence check only |
+
+### Knowledge graph, not log file
+
+Nodes have types, weights, domains, and audiences. Edges carry provenance and decay over time. The graph understands what matters — not just what was said.
+
+### Operational guardrails
+
+Constraints block deploys. Directives encode preferences. Watches flag attention items. Checkpoints run pre-flight. No other memory plugin has this.
+
+### Cache-optimized LLM retrieval
+
+Three-tier prompt architecture with Anthropic prompt caching:
+
+- Tier 1: codebook (stable node index) — cached @ 10% cost
+- Tier 2: query-relevant context — cached per-topic @ 10% cost
+- Tier 3: user question — full price, tiny
+
+### Team and org ready
+
+`.kin` inheritance chains let a service repo inherit from a platform context, which inherits from an org voice. Private/team/org/public scoping with PII stripping on export.
+
+## In Practice
+
+A 162-file fantasy novel vault — characters, locations, magic systems, plot outlines — ingested in one pass. Cross-referenced by content mentions. Searched in milliseconds. 192 nodes, 11,802 edges, hybrid FTS5 + graph traversal in 142ms.
+
+## Node Types
+
+- **Knowledge**: concept, document, session, person, project, decision, question, artifact, skill
+- **Operational**: constraint (invariants), directive (soft rules), checkpoint (pre-flight), watch (attention flags)
+
+## Architecture
+
+```
+SQLite + FTS5          <- primary store and full-text search
+  nodes: id, title, content, type, weight, audience, domains, extra
+  edges: from_id, to_id, type, weight, provenance
+  fts5:  content synced via triggers
+
+Retrieval pipeline:
+  FTS5 BM25 --+
+  Graph BFS --+-- RRF merge -- tier formatter -- context block
+  (vectors) --+                   |
+                           full | abridged | summarized | executive | index
+
+Three integration paths:
+  MCP plugin --> Claude calls tools natively
+  CLI hooks  --> SessionStart / PreCompact / Stop lifecycle events
+  Adapters   --> Entry-point discovery for custom ingestion sources
+```
+
+## Session Tags
+
+Named work context handles:
+
+```
+kin tag start auth-refactor --focus "OAuth2 flow" --remaining "tokens,tests"
+kin tag segment --focus "Token storage" --summary "Flow design done"
+kin tag resume auth-refactor
+kin tag end --summary "All done"
+```
+
+## Reminders
+
+Reminders can carry shell commands and/or natural-language instructions. When due, the daemon executes them automatically — simple commands run directly, complex tasks launch headless `claude -p`.
+
+```
+kin remind create "Kill vast.ai instance" --at "in 1 hour" \
+  --action "vastai destroy instance 12345" \
+  --instructions "Download results from /workspace/ before killing"
+```
+
+## Dream — Knowledge Consolidation
+
+After each Claude Code session, a detached background process runs fuzzy deduplication, auto-applies pending suggestions, and strengthens edges between nodes that share domains. Like memory consolidation during sleep.
+
+```
+kin dream --dry-run       # preview
+kin dream                 # full cycle
+kin dream --lightweight   # dedup + suggestions
+kin dream --deep          # LLM-powered cluster summarisation
+```
+
+## Conversation Modes
+
+Modes are reusable conversation-priming artifacts. Five built-in: `collaborate`, `code`, `create`, `research`, `chat`. Primer establishes *how to think*, boundary defines *what quality means*, permissions state *what's allowed*.
+
+## .kin/ Directory
+
+Projects use `.kin/` directories for voice, domains, audience, and inheritance chains:
+
+```yaml
+name: payments-service
+audience: team
+domains: [payments, python]
+inherits:
+  - ../platform/.kin/config
+```
+
+## Links
+
+- Homepage: https://kindex.tools
+- Source: https://github.com/jmcentire/kindex
+- PyPI: https://pypi.org/project/kindex/
+- Docs: https://jmcentire.github.io/kindex/
+- MCP server card: https://kindex.tools/.well-known/mcp/server-card.json
+- Agent skills index: https://kindex.tools/.well-known/agent-skills/index.json
+- Privacy: https://kindex.tools/privacy/
+
+## License
+
+MIT — see LICENSE in the source repo.

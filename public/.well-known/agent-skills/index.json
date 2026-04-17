@@ -1,0 +1,35 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/agent-skills-index.json",
+  "version": "1.0",
+  "publisher": {
+    "name": "Kindex",
+    "url": "https://kindex.tools",
+    "repository": "https://github.com/jmcentire/kindex"
+  },
+  "skills": [
+    {
+      "name": "kindex-prime",
+      "title": "Kindex Prime",
+      "description": "Load relevant context from the Kindex knowledge graph at session start. Orients Claude with project knowledge, active constraints, and watches.",
+      "url": "https://raw.githubusercontent.com/jmcentire/kindex/main/skills/kindex-prime/SKILL.md",
+      "trigger": "session-start",
+      "requires": ["kindex"]
+    },
+    {
+      "name": "kindex-capture",
+      "title": "Kindex Capture",
+      "description": "Capture a specific piece of knowledge, constraint, or decision to the Kindex knowledge graph. Use when the user says 'remember this' or 'add this to kindex'.",
+      "url": "https://raw.githubusercontent.com/jmcentire/kindex/main/skills/kindex-capture/SKILL.md",
+      "trigger": "on-demand",
+      "requires": ["kindex"]
+    },
+    {
+      "name": "kindex-learn",
+      "title": "Kindex Learn",
+      "description": "Extract knowledge from the current conversation and add it to the Kindex graph. Use at session end or after producing valuable discoveries.",
+      "url": "https://raw.githubusercontent.com/jmcentire/kindex/main/skills/kindex-learn/SKILL.md",
+      "trigger": "session-end",
+      "requires": ["kindex"]
+    }
+  ]
+}
