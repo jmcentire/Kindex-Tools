@@ -1,6 +1,6 @@
 # Kindex — Full Reference
 
-> The memory layer AI coding agents do not have. Persistent knowledge graph for AI workflows. MCP server + CLI. Version 0.17.0. MIT licensed.
+> The memory layer AI coding agents do not have. Persistent knowledge graph for AI workflows. MCP server + CLI. Version 0.18.0. MIT licensed.
 
 Kindex does one thing: it knows what you know. It's a persistent knowledge graph for AI-assisted workflows. It indexes your conversations, projects, and intellectual work so that Claude Code, Codex, and other MCP-capable agents never start a session blind.
 

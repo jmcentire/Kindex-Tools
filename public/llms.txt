@@ -7,9 +7,9 @@ Kindex is a weighted knowledge graph (SQLite + FTS5 + graph traversal) that capt
 ## What Kindex is
 
 - **MCP server**: `kin-mcp` exposes tools to Claude Code, Codex, and other MCP clients (search, add, context, show, ask, learn, link, list_nodes, status, suggest, graph_stats, graph_merge, dream, changelog, ingest, tag_start, tag_update, tag_resume, task_add, task_done, task_list, watch_add, watch_list, watch_resolve, remind_create, remind_list, remind_snooze, remind_done, remind_check, remind_exec, mode_activate, mode_list, mode_show, mode_create, mode_export, mode_import, mode_seed).
-- **CLI**: 49 `kin` subcommands for scripts, cron, and humans.
+- **CLI**: 53 `kin` subcommands for scripts, cron, and humans.
 - **Transport**: stdio (local). Package: `pip install kindex[mcp]`.
-- **Version**: 0.17.0. License: MIT. Repo: https://github.com/jmcentire/kindex.
+- **Version**: 0.18.0. License: MIT. Repo: https://github.com/jmcentire/kindex.
 - **Codex setup**: `kin setup-codex-mcp` and `kin setup-agents-md --install --global`.
 - **Codex session ingest**: `kin ingest codex-sessions`.
 
