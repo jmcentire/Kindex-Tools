@@ -1,15 +1,17 @@
 # Kindex
 
-> The memory layer Claude Code doesn't have. A persistent knowledge graph for AI-assisted workflows, distributed as an MCP server and standalone CLI. Indexes conversations, projects, and intellectual work so Claude Code never starts a session blind.
+> The memory layer AI coding agents do not have. A persistent knowledge graph for AI-assisted workflows, distributed as an MCP server and standalone CLI. Indexes conversations, projects, and intellectual work so Claude Code, Codex, and other MCP-capable agents never start a session blind.
 
-Kindex is a weighted knowledge graph (SQLite + FTS5 + graph traversal) that captures not just what happened but what it means and how it connects. It ships as a free Claude Code plugin (MCP server) or a standalone `kin` CLI on PyPI.
+Kindex is a weighted knowledge graph (SQLite + FTS5 + graph traversal) that captures not just what happened but what it means and how it connects. It ships as a free MCP plugin for Claude Code, Codex, and other agents or a standalone `kin` CLI on PyPI.
 
 ## What Kindex is
 
-- **MCP server**: `kin-mcp` exposes 30 tools to Claude Code (search, add, context, show, ask, learn, link, list_nodes, status, suggest, graph_stats, graph_merge, dream, changelog, ingest, tag_start, tag_update, tag_resume, task_add, task_done, task_list, watch_add, watch_list, watch_resolve, remind_create, remind_list, remind_snooze, remind_done, remind_check, remind_exec, mode_activate, mode_list, mode_show, mode_create, mode_export, mode_import, mode_seed).
+- **MCP server**: `kin-mcp` exposes tools to Claude Code, Codex, and other MCP clients (search, add, context, show, ask, learn, link, list_nodes, status, suggest, graph_stats, graph_merge, dream, changelog, ingest, tag_start, tag_update, tag_resume, task_add, task_done, task_list, watch_add, watch_list, watch_resolve, remind_create, remind_list, remind_snooze, remind_done, remind_check, remind_exec, mode_activate, mode_list, mode_show, mode_create, mode_export, mode_import, mode_seed).
 - **CLI**: 49 `kin` subcommands for scripts, cron, and humans.
 - **Transport**: stdio (local). Package: `pip install kindex[mcp]`.
 - **Version**: 0.17.0. License: MIT. Repo: https://github.com/jmcentire/kindex.
+- **Codex setup**: `kin setup-codex-mcp` and `kin setup-agents-md --install --global`.
+- **Codex session ingest**: `kin ingest codex-sessions`.
 
 ## Key capabilities
 

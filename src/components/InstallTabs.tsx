@@ -2,7 +2,8 @@ import { useState } from "react";
 import TerminalBlock from "./TerminalBlock";
 
 const tabs = [
-  { id: "claude-plugin", label: "Claude Code Plugin" },
+  { id: "claude-plugin", label: "Claude Code" },
+  { id: "codex", label: "Codex" },
   { id: "mcp-json", label: "MCP Config" },
   { id: "cli", label: "CLI Only" },
 ];
@@ -12,7 +13,7 @@ export default function InstallTabs() {
 
   return (
     <div>
-      <div className="grid grid-cols-3 gap-1 p-1 rounded-lg bg-card border border-border mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-1 p-1 rounded-lg bg-card border border-border mb-6">
         {tabs.map((tab) => (
           <button
             key={tab.id}
@@ -53,6 +54,30 @@ export default function InstallTabs() {
               { type: "output", text: "  mode_activate, mode_list, mode_show," },
               { type: "output", text: "  mode_create, mode_export, mode_import, mode_seed" },
             ]}
+          />
+        </div>
+      )}
+
+      {active === "codex" && (
+        <div className="space-y-4">
+          <p className="text-sm text-secondary">
+            Register the same MCP server with Codex, then install AGENTS.md directives so Codex uses kindex proactively.
+          </p>
+          <TerminalBlock
+            title="Codex"
+            lines={[
+              { type: "prompt", text: "$ pip install kindex[mcp]" },
+              { type: "prompt", text: "$ kin init" },
+              { type: "prompt", text: "$ kin setup-codex-mcp" },
+              { type: "prompt", text: "$ kin setup-agents-md --install --global" },
+              { type: "blank", text: "" },
+              { type: "output", text: "Kindex registered in ~/.codex/config.toml" },
+              { type: "output", text: "AGENTS.md directives installed for proactive use." },
+              { type: "blank", text: "" },
+              { type: "comment", text: "# Backfill saved Codex sessions" },
+              { type: "prompt", text: "$ kin ingest codex-sessions" },
+            ]}
+            copyText={"pip install kindex[mcp]\nkin init\nkin setup-codex-mcp\nkin setup-agents-md --install --global\nkin ingest codex-sessions"}
           />
         </div>
       )}

@@ -63,11 +63,11 @@ import CommandsTabs from "../components/CommandsTabs.tsx";
       </div>
 
       <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
-        The memory layer <span class="gradient-text">Claude Code</span> doesn't have.
+        The memory layer <span class="gradient-text">AI coding agents</span> don't have.
       </h1>
 
       <p class="text-lg sm:text-xl text-secondary max-w-2xl mx-auto mb-4">
-        A persistent knowledge graph for AI-assisted workflows. Your AI never starts a session blind.
+        A persistent knowledge graph for Claude Code, Codex, and MCP-capable AI workflows. Your AI never starts a session blind.
       </p>
 
       <p class="text-sm text-muted max-w-xl mx-auto mb-10">
@@ -92,11 +92,12 @@ import CommandsTabs from "../components/CommandsTabs.tsx";
           lines={[
             { type: "prompt", text: "$ pip install kindex[mcp]" },
             { type: "prompt", text: "$ claude mcp add --scope user --transport stdio kindex -- kin-mcp" },
+            { type: "comment", text: "# or: kin setup-codex-mcp" },
             { type: "prompt", text: "$ kin init" },
             { type: "blank", text: "" },
             { type: "output", text: "Kindex initialized. 37 MCP tools available." },
           ]}
-          copyText={"pip install kindex[mcp]\nclaude mcp add --scope user --transport stdio kindex -- kin-mcp\nkin init"}
+          copyText={"pip install kindex[mcp]\nclaude mcp add --scope user --transport stdio kindex -- kin-mcp\n# or: kin setup-codex-mcp\nkin init"}
         />
       </div>
     </div>
