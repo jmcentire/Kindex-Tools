@@ -2,9 +2,9 @@
   "$schema": "https://modelcontextprotocol.io/schemas/server-card.json",
   "serverInfo": {
     "name": "kindex",
-    "version": "0.17.0",
+    "version": "0.19.0",
     "title": "Kindex",
-    "description": "Persistent knowledge graph for AI-assisted workflows. Hybrid FTS5 + graph retrieval, context tiers, operational guardrails (constraints, directives, watches, checkpoints), session tags, reminders, dream-cycle consolidation, and .kin inheritance.",
+    "description": "Persistent knowledge graph for AI-assisted workflows. Hybrid FTS5 + graph retrieval, context tiers, operational guardrails, session tags, reminders, dream-cycle consolidation, git-tracked .kin project context, and opt-in work policy enforcement.",
     "homepage": "https://kindex.tools",
     "repository": "https://github.com/jmcentire/kindex",
     "documentation": "https://kindex.tools/llms-full.txt",

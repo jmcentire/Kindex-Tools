@@ -57,7 +57,7 @@ import CommandsTabs from "../components/CommandsTabs.tsx";
 
     <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
       <div class="flex items-center justify-center gap-2 mb-8">
-        <span class="inline-flex items-center px-3 py-1 text-xs font-mono rounded-full border border-border bg-card text-secondary">v0.12.0</span>
+        <span class="inline-flex items-center px-3 py-1 text-xs font-mono rounded-full border border-border bg-card text-secondary">v0.19.0</span>
         <span class="inline-flex items-center px-3 py-1 text-xs rounded-full border border-border bg-card text-secondary">930+ tests passing</span>
         <span class="inline-flex items-center px-3 py-1 text-xs rounded-full border border-border bg-card text-secondary">MIT License</span>
       </div>
@@ -95,7 +95,7 @@ import CommandsTabs from "../components/CommandsTabs.tsx";
             { type: "comment", text: "# or: kin setup-codex-mcp" },
             { type: "prompt", text: "$ kin init" },
             { type: "blank", text: "" },
-            { type: "output", text: "Kindex initialized. 37 MCP tools available." },
+            { type: "output", text: "Kindex initialized. 38 MCP tools available." },
           ]}
           copyText={"pip install kindex[mcp]\nclaude mcp add --scope user --transport stdio kindex -- kin-mcp\n# or: kin setup-codex-mcp\nkin init"}
         />
@@ -154,7 +154,7 @@ import CommandsTabs from "../components/CommandsTabs.tsx";
           <div class="p-6 h-full border border-border bg-card rounded-xl hover:border-border-bright transition-colors">
             <svg class="w-6 h-6 mb-4 text-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             <h3 class="text-base font-semibold mb-2 text-foreground">Team & Org Ready</h3>
-            <p class="text-sm text-secondary leading-relaxed">.kin inheritance chains from service to platform to org. Private/team/org/public scoping with PII stripping on export.</p>
+            <p class="text-sm text-secondary leading-relaxed">Git-tracked .kin project context from service to platform to org. Optional work policy gates tags, Linear IDs, and git hooks only when the repo opts in.</p>
           </div>
         </AnimatedSection>
 
@@ -172,7 +172,7 @@ import CommandsTabs from "../components/CommandsTabs.tsx";
           <div class="p-6 h-full border border-border bg-card rounded-xl hover:border-border-bright transition-colors">
             <svg class="w-6 h-6 mb-4 text-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
             <h3 class="text-base font-semibold mb-2 text-foreground">Git Integration</h3>
-            <p class="text-sm text-secondary leading-relaxed">Auto-capture knowledge on commits. Git hooks install with one command. Your codebase history becomes searchable context.</p>
+            <p class="text-sm text-secondary leading-relaxed">Auto-capture knowledge on commits. Opt-in project policy can block untagged work or missing Linear IDs from tracked .kin config.</p>
           </div>
         </AnimatedSection>
 
@@ -426,22 +426,22 @@ import CommandsTabs from "../components/CommandsTabs.tsx";
                 <svg class="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z"/><path d="m7 16.5-4.74-2.85"/><path d="m7 16.5 5-3"/><path d="M7 16.5v5.17"/><path d="M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5l-5 3Z"/><path d="m17 16.5-5-3"/><path d="m17 16.5 4.74-2.85"/><path d="M17 16.5v5.17"/><path d="M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8Z"/><path d="M12 8 7.26 5.15"/><path d="m12 8 4.74-2.85"/><path d="M12 13.5V8"/></svg>
                 <h3 class="text-xl font-semibold text-foreground">Multi-Repo Engineering</h3>
               </div>
-              <p class="text-secondary leading-relaxed mb-4">Link knowledge across repositories with .kin inheritance chains. A service repo inherits from platform context, which inherits from org-wide standards. Every Claude session knows the full stack.</p>
+              <p class="text-secondary leading-relaxed mb-4">Link knowledge across repositories with git-tracked .kin project contracts. A service repo inherits platform context, org standards, and optional work policy. Every agent session knows the repo's rules before it edits.</p>
             </div>
             <div class="lg:col-start-1">
               <TerminalBlock
                 client:visible
                 title="Multi-Repo Engineering"
                 lines={[
-                  { type: "comment", text: "# Service inherits from platform and org" },
-                  { type: "prompt", text: "$ cat .kin" },
-                  { type: "output", text: "inherit:" },
-                  { type: "output", text: "  - ../platform/.kin" },
-                  { type: "output", text: "  - ~/.config/kindex/org.kin" },
+                  { type: "comment", text: "# Service ships project context with code" },
+                  { type: "prompt", text: "$ cat .kin/config" },
+                  { type: "output", text: "inherits:" },
+                  { type: "output", text: "  - ../platform/.kin/config" },
+                  { type: "output", text: "work_policy:" },
+                  { type: "output", text: "  require_active_tag: true" },
                   { type: "blank", text: "" },
-                  { type: "prompt", text: "$ kin context --budget 1500" },
-                  { type: "output", text: "[abridged] 1,487 tokens injected" },
-                  { type: "output", text: "  3 constraints, 2 directives, 1 watch" },
+                  { type: "prompt", text: "$ kin policy check --event agent-start" },
+                  { type: "output", text: "Policy check passed (agent-start)." },
                 ]}
               />
             </div>
@@ -572,7 +572,7 @@ import CommandsTabs from "../components/CommandsTabs.tsx";
       <AnimatedSection client:visible className="text-center mb-12">
         <span class="inline-flex items-center px-3 py-1 text-xs font-mono rounded-full border border-border bg-card text-secondary mb-4">Tools & Commands</span>
         <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-          37 MCP tools. 49 CLI commands.
+          38 MCP tools. 59 CLI commands.
         </h2>
         <p class="text-secondary max-w-xl mx-auto text-lg">
           Comprehensive control over your knowledge graph, from both AI-assisted and manual workflows.

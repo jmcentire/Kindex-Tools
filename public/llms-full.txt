@@ -1,6 +1,6 @@
 # Kindex — Full Reference
 
-> The memory layer AI coding agents do not have. Persistent knowledge graph for AI workflows. MCP server + CLI. Version 0.18.0. MIT licensed.
+> The memory layer AI coding agents do not have. Persistent knowledge graph for AI workflows. MCP server + CLI. Version 0.19.0. MIT licensed.
 
 Kindex does one thing: it knows what you know. It's a persistent knowledge graph for AI-assisted workflows. It indexes your conversations, projects, and intellectual work so that Claude Code, Codex, and other MCP-capable agents never start a session blind.
 
@@ -43,7 +43,7 @@ kin init
 
 Optional extras: `kindex[llm]` (Anthropic), `kindex[vectors]` (sqlite-vec), `kindex[reminders]` (dateparser + cronsim), `kindex[all]`.
 
-## MCP Tools (30)
+## MCP Tools (38)
 
 Exposed by `kin-mcp` over stdio:
 
@@ -87,7 +87,11 @@ Three-tier prompt architecture with Anthropic prompt caching:
 
 ### Team and org ready
 
-`.kin` inheritance chains let a service repo inherit from a platform context, which inherits from an org voice. Private/team/org/public scoping with PII stripping on export.
+`.kin` inheritance chains let a service repo inherit from a platform context, which inherits from an org voice. Private/team/org/public scoping with PII stripping on export. `.kin/config` and `.kin/index.json` are repo-shipped artifacts; local/private state belongs in `~/.kindex` or ignored `.kin/local`, `.kin/cache`, `.kin/tmp`, `.kin/private`.
+
+### Project work policy
+
+`kin policy check` reads optional `work_policy` from the tracked project `.kin/config`. Absence of policy is allowed. Linear enforcement is opt-in and only applies when `work_policy.linear.enabled: true`.
 
 ## In Practice
 
@@ -157,7 +161,7 @@ Modes are reusable conversation-priming artifacts. Five built-in: `collaborate`,
 
 ## .kin/ Directory
 
-Projects use `.kin/` directories for voice, domains, audience, and inheritance chains:
+Projects use `.kin/` directories for voice, domains, audience, inheritance chains, and optional work policy:
 
 ```yaml
 name: payments-service
@@ -165,7 +169,15 @@ audience: team
 domains: [payments, python]
 inherits:
   - ../platform/.kin/config
+work_policy:
+  require_active_tag: true
+  linear:
+    enabled: true
+    require_issue: true
+    team: ENG
 ```
+
+Kindex resolves project config from explicit `--project-path`, `KIN_PROJECT`, git worktree root, then cwd.
 
 ## Links
 

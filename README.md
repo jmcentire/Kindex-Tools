@@ -4,11 +4,12 @@ The [kindex.tools](https://kindex.tools) website — marketing and documentation
 
 ## About Kindex
 
-Kindex is the memory layer AI coding agents do not have. A persistent knowledge graph for Claude Code, Codex, and MCP-capable workflows with MCP tools, CLI commands, session tags, cache-optimized LLM retrieval, Codex session ingestion, and five context tiers.
+Kindex is the memory layer AI coding agents do not have. A persistent knowledge graph for Claude Code, Codex, and MCP-capable workflows with MCP tools, CLI commands, session tags, cache-optimized LLM retrieval, Codex session ingestion, five context tiers, and git-tracked `.kin` project context with opt-in work policy enforcement.
 
 - **GitHub**: [jmcentire/kindex](https://github.com/jmcentire/kindex)
 - **PyPI**: [kindex](https://pypi.org/project/kindex/)
 - **Docs**: [jmcentire.github.io/kindex](https://jmcentire.github.io/kindex/)
+- **MCP Market**: [mcpmarket.com/server/kindex](https://mcpmarket.com/server/kindex)
 
 ## Development
 
