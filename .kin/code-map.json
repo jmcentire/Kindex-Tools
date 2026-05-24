@@ -1,0 +1,400 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "Kindex-Tools",
+    "description": "Code map exported from Kindex for Kindex-Tools.",
+    "languages": [
+      "TypeScript",
+      "typescript"
+    ],
+    "frameworks": [],
+    "analyzedAt": "2026-05-24T14:57:59",
+    "gitCommitHash": "e2c5b0ad5b208d9fc899fc90b940555471721950"
+  },
+  "nodes": [
+    {
+      "id": "code-mod-kindex-tools-b4ef2821711a",
+      "type": "file",
+      "name": "client/src/hooks/use-toast.ts",
+      "filePath": "client/src/hooks/use-toast.ts",
+      "summary": "Language: TypeScript | Path: client/src/hooks/use-toast.ts | ~177 lines ## Classes - State",
+      "tags": [
+        "code",
+        "typescript"
+      ],
+      "complexity": 5,
+      "languageNotes": {
+        "language": "TypeScript",
+        "kindexType": "artifact",
+        "toolTier": "A"
+      }
+    },
+    {
+      "id": "code-sym-kindex-tools-55e5dc4730c9",
+      "type": "class",
+      "name": "State",
+      "filePath": "client/src/hooks/use-toast.ts",
+      "summary": "class State (client/src/hooks/use-toast.ts:52)",
+      "tags": [
+        "code",
+        "typescript"
+      ],
+      "complexity": 1,
+      "languageNotes": {
+        "language": "TypeScript",
+        "kindexType": "concept",
+        "toolTier": ""
+      }
+    },
+    {
+      "id": "code-mod-kindex-tools-38b257e77e08",
+      "type": "file",
+      "name": "client/src/lib/utils.ts",
+      "filePath": "client/src/lib/utils.ts",
+      "summary": "Language: TypeScript | Path: client/src/lib/utils.ts | ~4 lines ## Functions - cn()",
+      "tags": [
+        "code",
+        "typescript"
+      ],
+      "complexity": 1,
+      "languageNotes": {
+        "language": "TypeScript",
+        "kindexType": "artifact",
+        "toolTier": "A"
+      }
+    },
+    {
+      "id": "code-mod-kindex-tools-cb9e99f67748",
+      "type": "file",
+      "name": "server/static.ts",
+      "filePath": "server/static.ts",
+      "summary": "Language: TypeScript | Path: server/static.ts | ~6 lines ## Functions - serveStatic()",
+      "tags": [
+        "code",
+        "typescript"
+      ],
+      "complexity": 1,
+      "languageNotes": {
+        "language": "TypeScript",
+        "kindexType": "artifact",
+        "toolTier": "A"
+      }
+    },
+    {
+      "id": "code-mod-kindex-tools-4174db2b5432",
+      "type": "file",
+      "name": "client/src/lib/queryClient.ts",
+      "filePath": "client/src/lib/queryClient.ts",
+      "summary": "Language: TypeScript | Path: client/src/lib/queryClient.ts | ~44 lines ## Functions - apiRequest()",
+      "tags": [
+        "code",
+        "typescript"
+      ],
+      "complexity": 2,
+      "languageNotes": {
+        "language": "TypeScript",
+        "kindexType": "artifact",
+        "toolTier": "A"
+      }
+    },
+    {
+      "id": "code-mod-kindex-tools-8f5152cdb50c",
+      "type": "file",
+      "name": "script/build.ts",
+      "filePath": "script/build.ts",
+      "summary": "Language: TypeScript | Path: script/build.ts | ~47 lines ## Functions - buildAll()",
+      "tags": [
+        "code",
+        "typescript"
+      ],
+      "complexity": 1,
+      "languageNotes": {
+        "language": "TypeScript",
+        "kindexType": "artifact",
+        "toolTier": "A"
+      }
+    },
+    {
+      "id": "code-mod-kindex-tools-eeb750dacd75",
+      "type": "file",
+      "name": "server/vite.ts",
+      "filePath": "/Users/jmcentire/Code/Kindex-Tools/server/vite.ts",
+      "summary": "Language: TypeScript | Path: server/vite.ts | ~51 lines ## Functions - setupVite()",
+      "tags": [
+        "code",
+        "typescript"
+      ],
+      "complexity": 1,
+      "languageNotes": {
+        "language": "typescript",
+        "kindexType": "artifact",
+        "toolTier": ""
+      }
+    },
+    {
+      "id": "code-mod-kindex-tools-6af4f8e34285",
+      "type": "file",
+      "name": "server/storage.ts",
+      "filePath": "/Users/jmcentire/Code/Kindex-Tools/server/storage.ts",
+      "summary": "Language: TypeScript | Path: server/storage.ts | ~38 lines ## Classes - IStorage",
+      "tags": [
+        "code",
+        "typescript"
+      ],
+      "complexity": 1,
+      "languageNotes": {
+        "language": "typescript",
+        "kindexType": "artifact",
+        "toolTier": ""
+      }
+    },
+    {
+      "id": "code-sym-kindex-tools-b21d56212446",
+      "type": "concept",
+      "name": "IStorage",
+      "filePath": "/Users/jmcentire/Code/Kindex-Tools/server/storage.ts:7",
+      "summary": "class IStorage (server/storage.ts:7)",
+      "tags": [
+        "code",
+        "typescript"
+      ],
+      "complexity": 1,
+      "languageNotes": {
+        "language": "typescript",
+        "kindexType": "concept",
+        "toolTier": ""
+      }
+    },
+    {
+      "id": "code-sym-kindex-tools-68f8123c8709",
+      "type": "concept",
+      "name": "MemStorage",
+      "filePath": "/Users/jmcentire/Code/Kindex-Tools/server/storage.ts:13",
+      "summary": "class MemStorage(IStorage) (server/storage.ts:13)",
+      "tags": [
+        "code",
+        "typescript"
+      ],
+      "complexity": 1,
+      "languageNotes": {
+        "language": "typescript",
+        "kindexType": "concept",
+        "toolTier": ""
+      }
+    },
+    {
+      "id": "code-mod-kindex-tools-786114c6ebf9",
+      "type": "file",
+      "name": "server/index.ts",
+      "filePath": "/Users/jmcentire/Code/Kindex-Tools/server/index.ts",
+      "summary": "Language: TypeScript | Path: server/index.ts | ~92 lines ## Classes - IncomingMessage",
+      "tags": [
+        "code",
+        "typescript"
+      ],
+      "complexity": 1,
+      "languageNotes": {
+        "language": "typescript",
+        "kindexType": "artifact",
+        "toolTier": ""
+      }
+    },
+    {
+      "id": "code-sym-kindex-tools-d3e6242a3e4a",
+      "type": "concept",
+      "name": "IncomingMessage",
+      "filePath": "/Users/jmcentire/Code/Kindex-Tools/server/index.ts:10",
+      "summary": "class IncomingMessage (server/index.ts:10)",
+      "tags": [
+        "code",
+        "typescript"
+      ],
+      "complexity": 1,
+      "languageNotes": {
+        "language": "typescript",
+        "kindexType": "concept",
+        "toolTier": ""
+      }
+    },
+    {
+      "id": "code-mod-kindex-tools-248adfc01eb4",
+      "type": "file",
+      "name": "shared/schema.ts",
+      "filePath": "/Users/jmcentire/Code/Kindex-Tools/shared/schema.ts",
+      "summary": "Language: TypeScript | Path: shared/schema.ts | ~18 lines",
+      "tags": [
+        "code",
+        "typescript"
+      ],
+      "complexity": 1,
+      "languageNotes": {
+        "language": "typescript",
+        "kindexType": "artifact",
+        "toolTier": ""
+      }
+    },
+    {
+      "id": "code-mod-kindex-tools-a063e361b470",
+      "type": "file",
+      "name": "server/routes.ts",
+      "filePath": "/Users/jmcentire/Code/Kindex-Tools/server/routes.ts",
+      "summary": "Language: TypeScript | Path: server/routes.ts | ~5 lines ## Functions - registerRoutes()",
+      "tags": [
+        "code",
+        "typescript"
+      ],
+      "complexity": 1,
+      "languageNotes": {
+        "language": "typescript",
+        "kindexType": "artifact",
+        "toolTier": ""
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "code-sym-kindex-tools-55e5dc4730c9",
+      "target": "code-mod-kindex-tools-b4ef2821711a",
+      "type": "contains",
+      "direction": "outbound",
+      "weight": 0.0108
+    },
+    {
+      "source": "code-mod-kindex-tools-38b257e77e08",
+      "target": "code-mod-kindex-tools-4174db2b5432",
+      "type": "related",
+      "direction": "outbound",
+      "weight": 0.0108
+    },
+    {
+      "source": "code-mod-kindex-tools-4174db2b5432",
+      "target": "code-mod-kindex-tools-38b257e77e08",
+      "type": "related",
+      "direction": "outbound",
+      "weight": 0.0108
+    },
+    {
+      "source": "code-sym-kindex-tools-b21d56212446",
+      "target": "code-mod-kindex-tools-6af4f8e34285",
+      "type": "contains",
+      "direction": "outbound",
+      "weight": 0.0108
+    },
+    {
+      "source": "code-sym-kindex-tools-68f8123c8709",
+      "target": "code-mod-kindex-tools-6af4f8e34285",
+      "type": "contains",
+      "direction": "outbound",
+      "weight": 0.0108
+    },
+    {
+      "source": "code-sym-kindex-tools-d3e6242a3e4a",
+      "target": "code-mod-kindex-tools-786114c6ebf9",
+      "type": "contains",
+      "direction": "outbound",
+      "weight": 0.0108
+    }
+  ],
+  "layers": [
+    {
+      "id": "api",
+      "name": "Api",
+      "description": "Kindex-inferred api layer.",
+      "nodeIds": [
+        "code-mod-kindex-tools-a063e361b470"
+      ]
+    },
+    {
+      "id": "core",
+      "name": "Core",
+      "description": "Kindex-inferred core layer.",
+      "nodeIds": [
+        "code-mod-kindex-tools-38b257e77e08",
+        "code-mod-kindex-tools-4174db2b5432",
+        "code-mod-kindex-tools-6af4f8e34285",
+        "code-mod-kindex-tools-786114c6ebf9",
+        "code-mod-kindex-tools-b4ef2821711a",
+        "code-mod-kindex-tools-cb9e99f67748",
+        "code-mod-kindex-tools-eeb750dacd75",
+        "code-sym-kindex-tools-68f8123c8709",
+        "code-sym-kindex-tools-b21d56212446",
+        "code-sym-kindex-tools-d3e6242a3e4a"
+      ]
+    },
+    {
+      "id": "data",
+      "name": "Data",
+      "description": "Kindex-inferred data layer.",
+      "nodeIds": [
+        "code-mod-kindex-tools-248adfc01eb4"
+      ]
+    },
+    {
+      "id": "domain",
+      "name": "Domain",
+      "description": "Kindex-inferred domain layer.",
+      "nodeIds": [
+        "code-sym-kindex-tools-55e5dc4730c9"
+      ]
+    },
+    {
+      "id": "ui",
+      "name": "Ui",
+      "description": "Kindex-inferred ui layer.",
+      "nodeIds": [
+        "code-mod-kindex-tools-8f5152cdb50c"
+      ]
+    }
+  ],
+  "tour": [
+    {
+      "order": 1,
+      "title": "Api",
+      "description": "Review 1 node(s) in the Api layer.",
+      "nodeIds": [
+        "code-mod-kindex-tools-a063e361b470"
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Core",
+      "description": "Review 10 node(s) in the Core layer.",
+      "nodeIds": [
+        "code-mod-kindex-tools-38b257e77e08",
+        "code-mod-kindex-tools-4174db2b5432",
+        "code-mod-kindex-tools-6af4f8e34285",
+        "code-mod-kindex-tools-786114c6ebf9",
+        "code-mod-kindex-tools-b4ef2821711a",
+        "code-mod-kindex-tools-cb9e99f67748",
+        "code-mod-kindex-tools-eeb750dacd75",
+        "code-sym-kindex-tools-68f8123c8709",
+        "code-sym-kindex-tools-b21d56212446",
+        "code-sym-kindex-tools-d3e6242a3e4a"
+      ]
+    },
+    {
+      "order": 3,
+      "title": "Data",
+      "description": "Review 1 node(s) in the Data layer.",
+      "nodeIds": [
+        "code-mod-kindex-tools-248adfc01eb4"
+      ]
+    },
+    {
+      "order": 4,
+      "title": "Domain",
+      "description": "Review 1 node(s) in the Domain layer.",
+      "nodeIds": [
+        "code-sym-kindex-tools-55e5dc4730c9"
+      ]
+    },
+    {
+      "order": 5,
+      "title": "Ui",
+      "description": "Review 1 node(s) in the Ui layer.",
+      "nodeIds": [
+        "code-mod-kindex-tools-8f5152cdb50c"
+      ]
+    }
+  ]
+}
