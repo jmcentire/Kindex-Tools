@@ -43,7 +43,7 @@ export default function InstallTabs() {
       {active === "claude-plugin" && (
         <div className="space-y-4">
           <p className="text-sm text-secondary">
-            Two commands. Zero configuration. Claude Code gets 38 native tools instantly.
+            Two commands. Zero configuration. Claude Code gets 45 native tools instantly.
           </p>
           <TerminalBlock
             title="Claude Code Plugin"
@@ -53,12 +53,14 @@ export default function InstallTabs() {
               { type: "prompt", text: "$ kin init" },
               { type: "blank", text: "" },
               { type: "output", text: "Kindex initialized. Knowledge graph ready." },
-              { type: "output", text: "38 MCP tools available:" },
+              { type: "output", text: "45 MCP tools available:" },
               { type: "output", text: "  search, add, context, show, ask, learn, ingest," },
               { type: "output", text: "  link, list_nodes, status, suggest, graph_stats," },
               { type: "output", text: "  graph_heal, graph_merge, changelog," },
               { type: "output", text: "  tag_start, tag_update, tag_resume," },
-              { type: "output", text: "  task_add, task_list, task_done," },
+              { type: "output", text: "  task_add, task_list, task_done, task_claim," },
+              { type: "output", text: "  task_release, coord_start, coord_post," },
+              { type: "output", text: "  coord_read, coord_list, coord_end," },
               { type: "output", text: "  remind_create, remind_list, remind_snooze," },
               { type: "output", text: "  remind_done, remind_check, remind_exec," },
               { type: "output", text: "  watch_add, watch_list, watch_resolve," },

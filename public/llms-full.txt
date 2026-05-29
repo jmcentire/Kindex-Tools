@@ -1,8 +1,8 @@
 # Kindex — Full Reference
 
-> The memory layer AI coding agents do not have. Persistent knowledge graph for AI workflows. MCP server + CLI. Version 0.19.0. MIT licensed.
+> The memory layer AI coding agents do not have. Persistent knowledge graph for AI workflows. MCP server + CLI. Version 0.21.2. MIT licensed.
 
-Kindex does one thing: it knows what you know. It's a persistent knowledge graph for AI-assisted workflows. It indexes your conversations, projects, and intellectual work so that Claude Code, Codex, and other MCP-capable agents never start a session blind.
+Kindex does one thing: it knows what you know. It's a persistent knowledge graph for AI-assisted workflows. It indexes your conversations, projects, and intellectual work so that Claude Code, Codex, Gemini CLI, OpenCode, Cursor, and other MCP-capable agents never start a session blind.
 
 Memory plugins capture what happened. Kindex captures what it means and how it connects. Most memory tools are session archives with search. Kindex is a weighted knowledge graph that grows intelligence over time — understanding relationships, surfacing constraints, and managing exactly how much context to inject based on your available token budget.
 
@@ -43,14 +43,15 @@ kin init
 
 Optional extras: `kindex[llm]` (Anthropic), `kindex[vectors]` (sqlite-vec), `kindex[reminders]` (dateparser + cronsim), `kindex[all]`.
 
-## MCP Tools (38)
+## MCP Tools (45)
 
 Exposed by `kin-mcp` over stdio:
 
 - **Core**: `search`, `add`, `context`, `show`, `ask`, `learn`, `link`, `list_nodes`, `status`, `suggest`
-- **Graph**: `graph_stats`, `graph_merge`, `dream`, `changelog`, `ingest`
+- **Graph**: `graph_stats`, `graph_heal`, `graph_merge`, `dream`, `changelog`, `ingest`
 - **Sessions**: `tag_start`, `tag_update`, `tag_resume`
-- **Tasks**: `task_add`, `task_done`, `task_list`
+- **Tasks**: `task_add`, `task_done`, `task_list`, `task_claim`, `task_release`
+- **Coordination**: `coord_start`, `coord_post`, `coord_read`, `coord_list`, `coord_end`
 - **Watches**: `watch_add`, `watch_list`, `watch_resolve`
 - **Reminders**: `remind_create`, `remind_list`, `remind_snooze`, `remind_done`, `remind_check`, `remind_exec`
 - **Modes**: `mode_activate`, `mode_list`, `mode_show`, `mode_create`, `mode_export`, `mode_import`, `mode_seed`
@@ -146,7 +147,7 @@ kin remind create "Kill vast.ai instance" --at "in 1 hour" \
 
 ## Dream — Knowledge Consolidation
 
-After each Claude Code session, a detached background process runs fuzzy deduplication, auto-applies pending suggestions, and strengthens edges between nodes that share domains. Like memory consolidation during sleep.
+After Claude Code sessions, a detached background process can run fuzzy deduplication, auto-apply pending suggestions, and strengthen edges between nodes that share domains. Hook-triggered dreams are throttled by `reminders.dream_min_interval`, and lightweight dreams cap new suggestion writes with `reminders.dream_max_new_suggestions` so large graphs stay responsive.
 
 ```
 kin dream --dry-run       # preview
