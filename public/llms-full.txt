@@ -1,6 +1,6 @@
 # Kindex — Full Reference
 
-> The memory layer AI coding agents do not have. Persistent knowledge graph for AI workflows. MCP server + CLI. Version 0.21.2. MIT licensed.
+> The memory layer AI coding agents do not have. Persistent knowledge graph for AI workflows. MCP server + CLI. Version 0.24.1. MIT licensed.
 
 Kindex does one thing: it knows what you know. It's a persistent knowledge graph for AI-assisted workflows. It indexes your conversations, projects, and intellectual work so that Claude Code, Codex, Gemini CLI, OpenCode, Cursor, and other MCP-capable agents never start a session blind.
 
@@ -43,15 +43,16 @@ kin init
 
 Optional extras: `kindex[llm]` (Anthropic), `kindex[vectors]` (sqlite-vec), `kindex[reminders]` (dateparser + cronsim), `kindex[all]`.
 
-## MCP Tools (45)
+## MCP Tools (52)
 
 Exposed by `kin-mcp` over stdio:
 
-- **Core**: `search`, `add`, `context`, `show`, `ask`, `learn`, `link`, `list_nodes`, `status`, `suggest`
+- **Core**: `search`, `add`, `edit`, `supersede`, `context`, `show`, `ask`, `learn`, `link`, `list_nodes`, `status`, `suggest`
 - **Graph**: `graph_stats`, `graph_heal`, `graph_merge`, `dream`, `changelog`, `ingest`
 - **Sessions**: `tag_start`, `tag_update`, `tag_resume`
 - **Tasks**: `task_add`, `task_done`, `task_list`, `task_claim`, `task_release`
-- **Coordination**: `coord_start`, `coord_post`, `coord_read`, `coord_list`, `coord_end`
+- **Coordination**: `coord_start`, `coord_join`, `coord_post`, `coord_read`, `coord_attach`, `coord_inject`, `coord_list`, `coord_end`
+- **Locks**: `lock_acquire`, `lock_release`
 - **Watches**: `watch_add`, `watch_list`, `watch_resolve`
 - **Reminders**: `remind_create`, `remind_list`, `remind_snooze`, `remind_done`, `remind_check`, `remind_exec`
 - **Modes**: `mode_activate`, `mode_list`, `mode_show`, `mode_create`, `mode_export`, `mode_import`, `mode_seed`
@@ -88,11 +89,24 @@ Three-tier prompt architecture with Anthropic prompt caching:
 
 ### Team and org ready
 
-`.kin` inheritance chains let a service repo inherit from a platform context, which inherits from an org voice. Private/team/org/public scoping with PII stripping on export. `.kin/config` and `.kin/index.json` are repo-shipped artifacts; local/private state belongs in `~/.kindex` or ignored `.kin/local`, `.kin/cache`, `.kin/tmp`, `.kin/private`.
+`.kin` inheritance chains let a service repo inherit from a platform context, which inherits from an org voice. Private/team/org/public scoping with PII stripping on export. `.kin/config`, `.kin/index.json`, and `.kin/code-map.json` are repo-shipped artifacts; local/private state belongs in `~/.kindex` or ignored `.kin/local`, `.kin/cache`, `.kin/tmp`, `.kin/private`. Tracked `.kin` artifacts must be self-contained and machine-portable: code-map paths are repo-relative POSIX paths, and task/report metadata must not point at developer-local filesystem locations.
 
 ### Project work policy
 
 `kin policy check` reads optional `work_policy` from the tracked project `.kin/config`. Absence of policy is allowed. Linear enforcement is opt-in and only applies when `work_policy.linear.enabled: true`.
+
+## AI operating contract
+
+For durable work, use Kindex's persistent task and knowledge surfaces rather than host-session-only task state.
+
+- Start meaningful work with `tag_start` or `tag_resume`, then `search`, `context`, or `ask`.
+- Use `task_add`, `task_list`, and `task_done` for work that must survive the current conversation.
+- Search before `add`; prefer `edit` or `supersede` over duplicate nodes.
+- Capture decisions, constraints, questions, watches, and notable outputs while they are fresh, then link related nodes.
+- Treat tracked `.kin` files as shipped project state, not local cache.
+- If a generated artifact matters to future users or agents, make it repo-local, durable, and independently usable after a fresh clone.
+- If the host also exposes session-local task tools, use those only for temporary planning; durable tasks belong in Kindex.
+- Use `kin export` for audience-aware graph export and `kin export code-map` for current repo structure, code dependencies, layers, and repo-relative file paths.
 
 ## In Practice
 
@@ -180,11 +194,14 @@ work_policy:
 
 Kindex resolves project config from explicit `--project-path`, `KIN_PROJECT`, git worktree root, then cwd.
 
+For code-map output, `src/file.py` is portable; `/Users/alice/repo/src/file.py` and `C:\repo\src\file.py` are not. Outside-root, malformed, or unresolved paths are omitted rather than leaked into the tracked artifact. Archived nodes are excluded by default because a tracked code map describes current code; API callers can opt into `include_archived=True` for historical analysis.
+
 ## Links
 
 - Homepage: https://kindex.tools
 - Source: https://github.com/jmcentire/kindex
 - PyPI: https://pypi.org/project/kindex/
+- Agent guide: https://github.com/jmcentire/kindex/blob/main/docs/mcp-agent-guide.md
 - Docs: https://jmcentire.github.io/kindex/
 - MCP server card: https://kindex.tools/.well-known/mcp/server-card.json
 - Agent skills index: https://kindex.tools/.well-known/agent-skills/index.json

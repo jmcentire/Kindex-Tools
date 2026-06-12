@@ -6,14 +6,26 @@ Kindex is a weighted knowledge graph (SQLite + FTS5 + graph traversal) that capt
 
 ## What Kindex is
 
-- **MCP server**: `kin-mcp` exposes 45 tools to Claude Code, Codex, Gemini CLI, OpenCode, Cursor, and other MCP clients (search, add, context, show, ask, learn, link, list_nodes, status, suggest, graph_stats, graph_heal, graph_merge, dream, changelog, ingest, tag_start, tag_update, tag_resume, task_add, task_done, task_list, task_claim, task_release, coord_start, coord_post, coord_read, coord_list, coord_end, watch_add, watch_list, watch_resolve, remind_create, remind_list, remind_snooze, remind_done, remind_check, remind_exec, mode_activate, mode_list, mode_show, mode_create, mode_export, mode_import, mode_seed).
-- **CLI**: 63 `kin` subcommands for scripts, cron, hooks, and humans.
+- **MCP server**: `kin-mcp` exposes 52 tools to Claude Code, Codex, Gemini CLI, OpenCode, Cursor, and other MCP clients (search, add, edit, supersede, context, show, ask, learn, link, list_nodes, status, suggest, graph_stats, graph_heal, graph_merge, dream, changelog, ingest, tag_start, tag_update, tag_resume, task_add, task_done, task_list, task_claim, task_release, coord_start, coord_join, coord_post, coord_read, coord_attach, coord_inject, coord_list, coord_end, lock_acquire, lock_release, watch_add, watch_list, watch_resolve, remind_create, remind_list, remind_snooze, remind_done, remind_check, remind_exec, mode_activate, mode_list, mode_show, mode_create, mode_export, mode_import, mode_seed).
+- **CLI**: 69 `kin` subcommands for scripts, cron, hooks, and humans.
 - **Transport**: stdio (local). Package: `pip install kindex[mcp]`.
-- **Version**: 0.21.2. License: MIT. Repo: https://github.com/jmcentire/kindex.
+- **Version**: 0.24.1. License: MIT. Repo: https://github.com/jmcentire/kindex.
 - **Codex setup**: `kin setup-codex-mcp` and `kin setup-agents-md --install --global`.
 - **Codex session ingest**: `kin ingest codex-sessions`.
-- **Project context**: `.kin/config` and `.kin/index.json` are intended to ship with the repo. Local/private runtime state belongs in `~/.kindex` or ignored `.kin/local`, `.kin/cache`, `.kin/tmp`, `.kin/private`.
+- **Project context**: `.kin/config`, `.kin/index.json`, and `.kin/code-map.json` are intended to ship with the repo. Local/private runtime state belongs in `~/.kindex` or ignored `.kin/local`, `.kin/cache`, `.kin/tmp`, `.kin/private`.
+- **Portable artifacts**: tracked `.kin` files must be self-contained and machine-portable. Code-map paths are repo-relative POSIX paths. Do not commit local filesystem pointers, secrets, private transcripts, or local-only report references into tracked artifacts.
 - **Work policy**: `kin policy check` reads opt-in policy from `.kin/config`. Linear enforcement only applies when `work_policy.linear.enabled: true`.
+
+## AI operating contract
+
+- Start meaningful work with `tag_start` or `tag_resume`, then `search`, `context`, or `ask`.
+- Use `task_add`, `task_list`, and `task_done` for durable work items. Do not rely on host-session-only task state for work that must survive the current conversation.
+- Search before `add`; prefer `edit` or `supersede` over duplicate nodes.
+- Capture decisions, constraints, questions, watches, and notable outputs while they are fresh, then link related nodes.
+- Treat tracked `.kin` files as shipped project state, not local cache.
+- If a generated artifact matters to future users or agents, make it repo-local, durable, and independently usable after a fresh clone.
+- If the host also exposes session-local task tools, use those only for temporary planning; durable tasks belong in Kindex.
+- Use `kin export` for audience-aware graph export and `kin export code-map` for current repo structure, code dependencies, layers, and repo-relative file paths.
 
 ## Key capabilities
 
@@ -29,6 +41,7 @@ Kindex is a weighted knowledge graph (SQLite + FTS5 + graph traversal) that capt
 
 - Homepage: https://kindex.tools
 - Source: https://github.com/jmcentire/kindex
+- Agent guide: https://github.com/jmcentire/kindex/blob/main/docs/mcp-agent-guide.md
 - PyPI: https://pypi.org/project/kindex/
 - MCP server card: https://kindex.tools/.well-known/mcp/server-card.json
 - Agent skills: https://kindex.tools/.well-known/agent-skills/index.json
