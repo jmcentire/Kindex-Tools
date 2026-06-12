@@ -43,7 +43,7 @@ export default function InstallTabs() {
       {active === "claude-plugin" && (
         <div className="space-y-4">
           <p className="text-sm text-secondary">
-            Two commands. Zero configuration. Claude Code gets 45 native tools instantly.
+            Two commands. Zero configuration. Claude Code gets 52 native tools instantly.
           </p>
           <TerminalBlock
             title="Claude Code Plugin"
@@ -53,19 +53,12 @@ export default function InstallTabs() {
               { type: "prompt", text: "$ kin init" },
               { type: "blank", text: "" },
               { type: "output", text: "Kindex initialized. Knowledge graph ready." },
-              { type: "output", text: "45 MCP tools available:" },
-              { type: "output", text: "  search, add, context, show, ask, learn, ingest," },
-              { type: "output", text: "  link, list_nodes, status, suggest, graph_stats," },
-              { type: "output", text: "  graph_heal, graph_merge, changelog," },
-              { type: "output", text: "  tag_start, tag_update, tag_resume," },
-              { type: "output", text: "  task_add, task_list, task_done, task_claim," },
-              { type: "output", text: "  task_release, coord_start, coord_post," },
-              { type: "output", text: "  coord_read, coord_list, coord_end," },
-              { type: "output", text: "  remind_create, remind_list, remind_snooze," },
-              { type: "output", text: "  remind_done, remind_check, remind_exec," },
-              { type: "output", text: "  watch_add, watch_list, watch_resolve," },
-              { type: "output", text: "  mode_activate, mode_list, mode_show," },
-              { type: "output", text: "  mode_create, mode_export, mode_import, mode_seed" },
+              { type: "output", text: "52 MCP tools available:" },
+              { type: "output", text: "  search, add, edit, supersede, context, show, ask, learn," },
+              { type: "output", text: "  link, list_nodes, status, suggest, graph_stats, graph_heal," },
+              { type: "output", text: "  graph_merge, dream, changelog, ingest, tag_start, tag_update," },
+              { type: "output", text: "  tag_resume, task_add, task_list, task_done, task_claim," },
+              { type: "output", text: "  task_release, coord_*, lock_*, watch_*, remind_*, mode_*" },
             ]}
           />
         </div>
@@ -184,7 +177,7 @@ export default function InstallTabs() {
       {active === "cli" && (
         <div className="space-y-4">
           <p className="text-sm text-secondary">
-            Standalone CLI with 53+ commands. Install however you prefer; combine extras for LLM-powered extraction, vectors, and reminders.
+            Standalone CLI with 69 commands. Install however you prefer; combine extras for LLM-powered extraction, vectors, and reminders.
           </p>
           <TerminalBlock
             title="CLI Installation"

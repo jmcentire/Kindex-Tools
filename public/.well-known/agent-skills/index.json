@@ -10,7 +10,7 @@
     {
       "name": "kindex-prime",
       "title": "Kindex Prime",
-      "description": "Load relevant context from the Kindex knowledge graph at session start. Orients Claude with project knowledge, active constraints, and watches.",
+      "description": "Load relevant context from the Kindex knowledge graph at session start. Orients the agent with project knowledge, active constraints, and watches.",
       "url": "https://raw.githubusercontent.com/jmcentire/kindex/main/skills/kindex-prime/SKILL.md",
       "trigger": "session-start",
       "requires": ["kindex"]
