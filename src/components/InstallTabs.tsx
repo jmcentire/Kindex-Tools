@@ -5,6 +5,7 @@ const tabs = [
   { id: "claude-plugin", label: "Claude Code" },
   { id: "codex", label: "Codex" },
   { id: "gemini", label: "Gemini CLI" },
+  { id: "antigravity", label: "Antigravity" },
   { id: "opencode", label: "OpenCode" },
   { id: "cursor", label: "Cursor" },
   { id: "mcp-json", label: "MCP Config" },
@@ -16,7 +17,7 @@ export default function InstallTabs() {
 
   return (
     <div>
-      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-1 p-1 rounded-lg bg-card border border-border mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-1 p-1 rounded-lg bg-card border border-border mb-6">
         {tabs.map((tab) => (
           <button
             key={tab.id}
@@ -43,7 +44,7 @@ export default function InstallTabs() {
       {active === "claude-plugin" && (
         <div className="space-y-4">
           <p className="text-sm text-secondary">
-            Two commands. Zero configuration. Claude Code gets 52 native tools instantly.
+            Register the MCP server, then install CLAUDE.md directives and lifecycle hooks so Claude uses Kindex proactively.
           </p>
           <TerminalBlock
             title="Claude Code Plugin"
@@ -51,6 +52,8 @@ export default function InstallTabs() {
               { type: "prompt", text: "$ pip install 'kindex[mcp]'" },
               { type: "prompt", text: "$ claude mcp add --scope user --transport stdio kindex -- kin-mcp" },
               { type: "prompt", text: "$ kin init" },
+              { type: "prompt", text: "$ kin setup-claude-md --install" },
+              { type: "prompt", text: "$ kin setup-hooks" },
               { type: "blank", text: "" },
               { type: "output", text: "Kindex initialized. Knowledge graph ready." },
               { type: "output", text: "52 MCP tools available:" },
@@ -60,6 +63,7 @@ export default function InstallTabs() {
               { type: "output", text: "  tag_resume, task_add, task_list, task_done, task_claim," },
               { type: "output", text: "  task_release, coord_*, lock_*, watch_*, remind_*, mode_*" },
             ]}
+            copyText={"pip install 'kindex[mcp]'\nclaude mcp add --scope user --transport stdio kindex -- kin-mcp\nkin init\nkin setup-claude-md --install\nkin setup-hooks"}
           />
         </div>
       )}
@@ -75,15 +79,17 @@ export default function InstallTabs() {
               { type: "prompt", text: "$ pip install 'kindex[mcp]'" },
               { type: "prompt", text: "$ kin init" },
               { type: "prompt", text: "$ kin setup-codex-mcp" },
+              { type: "prompt", text: "$ kin setup-codex-hooks" },
               { type: "prompt", text: "$ kin setup-agents-md --install --global" },
               { type: "blank", text: "" },
               { type: "output", text: "Kindex registered in ~/.codex/config.toml" },
+              { type: "output", text: "Codex hooks installed for SessionStart and attention." },
               { type: "output", text: "AGENTS.md directives installed for proactive use." },
               { type: "blank", text: "" },
               { type: "comment", text: "# Backfill saved Codex sessions" },
               { type: "prompt", text: "$ kin ingest codex-sessions" },
             ]}
-            copyText={"pip install 'kindex[mcp]'\nkin init\nkin setup-codex-mcp\nkin setup-agents-md --install --global\nkin ingest codex-sessions"}
+            copyText={"pip install 'kindex[mcp]'\nkin init\nkin setup-codex-mcp\nkin setup-codex-hooks\nkin setup-agents-md --install --global\nkin ingest codex-sessions"}
           />
         </div>
       )}
@@ -106,6 +112,30 @@ export default function InstallTabs() {
               { type: "output", text: "Appended kindex directives to ~/.gemini/GEMINI.md" },
             ]}
             copyText={"pip install 'kindex[mcp]'\nkin init\nkin setup-gemini-mcp\nkin setup-gemini-md --install"}
+          />
+        </div>
+      )}
+
+
+      {active === "antigravity" && (
+        <div className="space-y-4">
+          <p className="text-sm text-secondary">
+            Register Kindex in Antigravity's standalone MCP files, then install lifecycle integration and GEMINI.md directives so the agent starts with project context and uses the graph proactively.
+          </p>
+          <TerminalBlock
+            title="Google Antigravity"
+            lines={[
+              { type: "prompt", text: "$ pip install 'kindex[mcp]'" },
+              { type: "prompt", text: "$ kin init" },
+              { type: "prompt", text: "$ kin setup-antigravity-mcp" },
+              { type: "prompt", text: "$ kin setup-antigravity-hooks" },
+              { type: "prompt", text: "$ kin setup-antigravity-md --install" },
+              { type: "blank", text: "" },
+              { type: "output", text: "Added Antigravity MCP server: kindex -> kin-mcp" },
+              { type: "output", text: "Installed Antigravity lifecycle integration." },
+              { type: "output", text: "Appended kindex directives to ~/.gemini/GEMINI.md" },
+            ]}
+            copyText={"pip install 'kindex[mcp]'\nkin init\nkin setup-antigravity-mcp\nkin setup-antigravity-hooks\nkin setup-antigravity-md --install"}
           />
         </div>
       )}
@@ -177,7 +207,7 @@ export default function InstallTabs() {
       {active === "cli" && (
         <div className="space-y-4">
           <p className="text-sm text-secondary">
-            Standalone CLI with 69 commands. Install however you prefer; combine extras for LLM-powered extraction, vectors, and reminders.
+            Standalone CLI with 75 commands. Install however you prefer; combine extras for LLM-powered extraction, vectors, and reminders.
           </p>
           <TerminalBlock
             title="CLI Installation"

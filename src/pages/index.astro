@@ -57,8 +57,8 @@ import CommandsTabs from "../components/CommandsTabs.tsx";
 
     <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
       <div class="flex items-center justify-center gap-2 mb-8">
-        <span class="inline-flex items-center px-3 py-1 text-xs font-mono rounded-full border border-border bg-card text-secondary">v0.24.1</span>
-        <span class="inline-flex items-center px-3 py-1 text-xs rounded-full border border-border bg-card text-secondary">1479 tests passing</span>
+        <span class="inline-flex items-center px-3 py-1 text-xs font-mono rounded-full border border-border bg-card text-secondary">v0.25.0</span>
+        <span class="inline-flex items-center px-3 py-1 text-xs rounded-full border border-border bg-card text-secondary">1492 tests passing</span>
         <span class="inline-flex items-center px-3 py-1 text-xs rounded-full border border-border bg-card text-secondary">MIT License</span>
       </div>
 
@@ -67,7 +67,7 @@ import CommandsTabs from "../components/CommandsTabs.tsx";
       </h1>
 
       <p class="text-lg sm:text-xl text-secondary max-w-2xl mx-auto mb-4">
-        A persistent knowledge graph for Claude Code, Codex, Gemini CLI, OpenCode, Cursor, and other MCP-capable AI workflows. Your AI never starts a session blind.
+        A persistent knowledge graph for Claude Code, Codex, Gemini CLI, Google Antigravity, OpenCode, Cursor, and other MCP-capable AI workflows. Your AI never starts a session blind.
       </p>
 
       <p class="text-sm text-muted max-w-xl mx-auto mb-10">
@@ -92,12 +92,12 @@ import CommandsTabs from "../components/CommandsTabs.tsx";
           lines={[
             { type: "prompt", text: "$ pip install kindex[mcp]" },
             { type: "prompt", text: "$ claude mcp add --scope user --transport stdio kindex -- kin-mcp" },
-            { type: "comment", text: "# or: kin setup-codex-mcp" },
+            { type: "comment", text: "# or: kin setup-codex-mcp / setup-antigravity-mcp" },
             { type: "prompt", text: "$ kin init" },
             { type: "blank", text: "" },
             { type: "output", text: "Kindex initialized. 52 MCP tools available." },
           ]}
-          copyText={"pip install kindex[mcp]\nclaude mcp add --scope user --transport stdio kindex -- kin-mcp\n# or: kin setup-codex-mcp\nkin init"}
+          copyText={"pip install kindex[mcp]\nclaude mcp add --scope user --transport stdio kindex -- kin-mcp\n# or: kin setup-codex-mcp / setup-antigravity-mcp\nkin init"}
         />
       </div>
     </div>
@@ -575,7 +575,7 @@ import CommandsTabs from "../components/CommandsTabs.tsx";
       <AnimatedSection client:visible className="text-center mb-12">
         <span class="inline-flex items-center px-3 py-1 text-xs font-mono rounded-full border border-border bg-card text-secondary mb-4">Tools & Commands</span>
         <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-          52 MCP tools. 69 CLI commands.
+          52 MCP tools. 75 CLI commands.
         </h2>
         <p class="text-secondary max-w-xl mx-auto text-lg">
           Comprehensive control over your knowledge graph, from both AI-assisted and manual workflows.

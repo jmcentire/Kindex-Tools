@@ -3,17 +3,17 @@
 
 manifest:
   spec: "0.1"
-  updated: "2026-05-28T00:00:00Z"
+  updated: "2026-06-12T00:00:00Z"
   canonical: "https://perardua.dev/specs/capabilities"
 
 domain:
   name: "Kindex"
   url: "https://kindex.tools"
   description: >
-    Persistent knowledge graph for Claude Code, Codex, Gemini CLI, OpenCode,
-    Cursor, and MCP-capable agents. Hybrid FTS5 + graph search, 52 MCP tools,
-    throttled dream-cycle consolidation, modes, tasks, reminders, and watch
-    items. pip install kindex.
+    Persistent knowledge graph for Claude Code, Codex, Gemini CLI, Google
+    Antigravity, OpenCode, Cursor, and MCP-capable agents. Hybrid FTS5 + graph search, 52 MCP tools, 75 CLI commands,
+    lifecycle adapters, agent-specific tuning, throttled dream-cycle
+    consolidation, modes, tasks, reminders, and watch items. pip install kindex.
   contact: "jmc@cageandmirror.com"
   tos: "/tos"
   privacy: "/privacy"
