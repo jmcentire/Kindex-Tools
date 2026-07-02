@@ -1,15 +1,352 @@
 {
-  "edges": [],
-  "layers": [],
-  "nodes": [],
+  "version": "1.0.0",
   "project": {
-    "analyzedAt": "2026-05-28T20:58:06-05:00",
-    "description": "Code map exported from Kindex for Kindex-Tools.",
+    "name": "kindex-tools",
+    "description": "Code map exported from Kindex for kindex-tools.",
+    "languages": [
+      "Astro",
+      "JavaScript",
+      "TypeScript"
+    ],
     "frameworks": [],
-    "gitCommitHash": "4eabc1de04c23f73bace56a29f0ff5a96b6f1f19",
-    "languages": [],
-    "name": "Kindex-Tools"
+    "analyzedAt": "2026-06-12T14:05:55-05:00",
+    "gitCommitHash": "19288864cf80edae7bd3a78f6a7244b031a6b796"
   },
-  "tour": [],
-  "version": "1.0.0"
+  "nodes": [
+    {
+      "id": "code-mod-kindex-tools-e0f0c5adbe0b",
+      "type": "file",
+      "name": "astro.config.mjs",
+      "filePath": "astro.config.mjs",
+      "summary": "Language: JavaScript | Path: astro.config.mjs | ~11 lines",
+      "tags": [
+        "code",
+        "javascript"
+      ],
+      "complexity": 1,
+      "languageNotes": {
+        "language": "JavaScript",
+        "kindexType": "artifact",
+        "toolTier": "A"
+      }
+    },
+    {
+      "id": "code-sym-kindex-tools-3b0dabcf6d81",
+      "type": "class",
+      "name": "Props",
+      "filePath": "src/components/AnimatedSection.tsx",
+      "summary": "class Props (src/components/AnimatedSection.tsx:4)",
+      "tags": [
+        "code",
+        "typescript"
+      ],
+      "complexity": 1,
+      "languageNotes": {
+        "language": "TypeScript",
+        "kindexType": "concept",
+        "toolTier": ""
+      }
+    },
+    {
+      "id": "code-mod-kindex-tools-cd1f25dcd866",
+      "type": "file",
+      "name": "src/components/AnimatedSection.tsx",
+      "filePath": "src/components/AnimatedSection.tsx",
+      "summary": "Language: TypeScript | Path: src/components/AnimatedSection.tsx | ~24 lines ## Classes - Props",
+      "tags": [
+        "code",
+        "typescript"
+      ],
+      "complexity": 2,
+      "languageNotes": {
+        "language": "TypeScript",
+        "kindexType": "artifact",
+        "toolTier": "A"
+      }
+    },
+    {
+      "id": "code-mod-kindex-tools-9cb5a5ccfd50",
+      "type": "file",
+      "name": "src/components/CommandsTabs.tsx",
+      "filePath": "src/components/CommandsTabs.tsx",
+      "summary": "Language: TypeScript | Path: src/components/CommandsTabs.tsx | ~178 lines ## Functions - CommandsTabs()",
+      "tags": [
+        "code",
+        "typescript"
+      ],
+      "complexity": 1,
+      "languageNotes": {
+        "language": "TypeScript",
+        "kindexType": "artifact",
+        "toolTier": "A"
+      }
+    },
+    {
+      "id": "code-mod-kindex-tools-133c01313857",
+      "type": "file",
+      "name": "src/components/ContextTiers.tsx",
+      "filePath": "src/components/ContextTiers.tsx",
+      "summary": "Language: TypeScript | Path: src/components/ContextTiers.tsx | ~43 lines ## Functions - ContextTiers()",
+      "tags": [
+        "code",
+        "typescript"
+      ],
+      "complexity": 1,
+      "languageNotes": {
+        "language": "TypeScript",
+        "kindexType": "artifact",
+        "toolTier": "A"
+      }
+    },
+    {
+      "id": "code-mod-kindex-tools-351b54d5e204",
+      "type": "file",
+      "name": "src/components/InstallTabs.tsx",
+      "filePath": "src/components/InstallTabs.tsx",
+      "summary": "Language: TypeScript | Path: src/components/InstallTabs.tsx | ~235 lines ## Functions - InstallTabs()",
+      "tags": [
+        "code",
+        "typescript"
+      ],
+      "complexity": 1,
+      "languageNotes": {
+        "language": "TypeScript",
+        "kindexType": "artifact",
+        "toolTier": "A"
+      }
+    },
+    {
+      "id": "code-mod-kindex-tools-ae339a739b16",
+      "type": "file",
+      "name": "src/components/MobileNav.tsx",
+      "filePath": "src/components/MobileNav.tsx",
+      "summary": "Language: TypeScript | Path: src/components/MobileNav.tsx | ~81 lines ## Functions - MobileNav()",
+      "tags": [
+        "code",
+        "typescript"
+      ],
+      "complexity": 1,
+      "languageNotes": {
+        "language": "TypeScript",
+        "kindexType": "artifact",
+        "toolTier": "A"
+      }
+    },
+    {
+      "id": "code-sym-kindex-tools-576ea380d535",
+      "type": "class",
+      "name": "TerminalLine",
+      "filePath": "src/components/TerminalBlock.tsx",
+      "summary": "class TerminalLine (src/components/TerminalBlock.tsx:3)",
+      "tags": [
+        "code",
+        "typescript"
+      ],
+      "complexity": 1,
+      "languageNotes": {
+        "language": "TypeScript",
+        "kindexType": "concept",
+        "toolTier": ""
+      }
+    },
+    {
+      "id": "code-sym-kindex-tools-8a1e23005eec",
+      "type": "class",
+      "name": "TerminalBlockProps",
+      "filePath": "src/components/TerminalBlock.tsx",
+      "summary": "class TerminalBlockProps (src/components/TerminalBlock.tsx:8)",
+      "tags": [
+        "code",
+        "typescript"
+      ],
+      "complexity": 1,
+      "languageNotes": {
+        "language": "TypeScript",
+        "kindexType": "concept",
+        "toolTier": ""
+      }
+    },
+    {
+      "id": "code-mod-kindex-tools-41c4097a8fe3",
+      "type": "file",
+      "name": "src/components/TerminalBlock.tsx",
+      "filePath": "src/components/TerminalBlock.tsx",
+      "summary": "Language: TypeScript | Path: src/components/TerminalBlock.tsx | ~90 lines ## Classes - TerminalBlockProps",
+      "tags": [
+        "code",
+        "typescript"
+      ],
+      "complexity": 3,
+      "languageNotes": {
+        "language": "TypeScript",
+        "kindexType": "artifact",
+        "toolTier": "A"
+      }
+    },
+    {
+      "id": "code-mod-kindex-tools-5cd95420755f",
+      "type": "file",
+      "name": "src/components/ThemeToggle.tsx",
+      "filePath": "src/components/ThemeToggle.tsx",
+      "summary": "Language: TypeScript | Path: src/components/ThemeToggle.tsx | ~43 lines ## Functions - ThemeToggle()",
+      "tags": [
+        "code",
+        "typescript"
+      ],
+      "complexity": 1,
+      "languageNotes": {
+        "language": "TypeScript",
+        "kindexType": "artifact",
+        "toolTier": "A"
+      }
+    },
+    {
+      "id": "code-mod-kindex-tools-621c0d4e1d79",
+      "type": "file",
+      "name": "src/layouts/BaseLayout.astro",
+      "filePath": "src/layouts/BaseLayout.astro",
+      "summary": "Language: Astro | Path: src/layouts/BaseLayout.astro | ~103 lines",
+      "tags": [
+        "astro",
+        "code"
+      ],
+      "complexity": 1,
+      "languageNotes": {
+        "language": "Astro",
+        "kindexType": "artifact",
+        "toolTier": "A"
+      }
+    },
+    {
+      "id": "code-mod-kindex-tools-95d291e9ce4c",
+      "type": "file",
+      "name": "src/pages/index.astro",
+      "filePath": "src/pages/index.astro",
+      "summary": "Language: Astro | Path: src/pages/index.astro | ~973 lines",
+      "tags": [
+        "astro",
+        "code"
+      ],
+      "complexity": 1,
+      "languageNotes": {
+        "language": "Astro",
+        "kindexType": "artifact",
+        "toolTier": "A"
+      }
+    },
+    {
+      "id": "code-mod-kindex-tools-018aabafc66d",
+      "type": "file",
+      "name": "src/pages/privacy.astro",
+      "filePath": "src/pages/privacy.astro",
+      "summary": "Language: Astro | Path: src/pages/privacy.astro | ~76 lines",
+      "tags": [
+        "astro",
+        "code"
+      ],
+      "complexity": 1,
+      "languageNotes": {
+        "language": "Astro",
+        "kindexType": "artifact",
+        "toolTier": "A"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "code-sym-kindex-tools-3b0dabcf6d81",
+      "target": "code-mod-kindex-tools-cd1f25dcd866",
+      "type": "contains",
+      "direction": "outbound",
+      "weight": 0.6
+    },
+    {
+      "source": "code-sym-kindex-tools-576ea380d535",
+      "target": "code-mod-kindex-tools-41c4097a8fe3",
+      "type": "contains",
+      "direction": "outbound",
+      "weight": 0.6
+    },
+    {
+      "source": "code-sym-kindex-tools-8a1e23005eec",
+      "target": "code-mod-kindex-tools-41c4097a8fe3",
+      "type": "contains",
+      "direction": "outbound",
+      "weight": 0.6
+    }
+  ],
+  "layers": [
+    {
+      "id": "core",
+      "name": "Core",
+      "description": "Kindex-inferred core layer.",
+      "nodeIds": [
+        "code-mod-kindex-tools-621c0d4e1d79",
+        "code-mod-kindex-tools-e0f0c5adbe0b"
+      ]
+    },
+    {
+      "id": "domain",
+      "name": "Domain",
+      "description": "Kindex-inferred domain layer.",
+      "nodeIds": [
+        "code-sym-kindex-tools-3b0dabcf6d81",
+        "code-sym-kindex-tools-576ea380d535",
+        "code-sym-kindex-tools-8a1e23005eec"
+      ]
+    },
+    {
+      "id": "ui",
+      "name": "Ui",
+      "description": "Kindex-inferred ui layer.",
+      "nodeIds": [
+        "code-mod-kindex-tools-018aabafc66d",
+        "code-mod-kindex-tools-133c01313857",
+        "code-mod-kindex-tools-351b54d5e204",
+        "code-mod-kindex-tools-41c4097a8fe3",
+        "code-mod-kindex-tools-5cd95420755f",
+        "code-mod-kindex-tools-95d291e9ce4c",
+        "code-mod-kindex-tools-9cb5a5ccfd50",
+        "code-mod-kindex-tools-ae339a739b16",
+        "code-mod-kindex-tools-cd1f25dcd866"
+      ]
+    }
+  ],
+  "tour": [
+    {
+      "order": 1,
+      "title": "Core",
+      "description": "Review 2 node(s) in the Core layer.",
+      "nodeIds": [
+        "code-mod-kindex-tools-621c0d4e1d79",
+        "code-mod-kindex-tools-e0f0c5adbe0b"
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Domain",
+      "description": "Review 3 node(s) in the Domain layer.",
+      "nodeIds": [
+        "code-sym-kindex-tools-3b0dabcf6d81",
+        "code-sym-kindex-tools-576ea380d535",
+        "code-sym-kindex-tools-8a1e23005eec"
+      ]
+    },
+    {
+      "order": 3,
+      "title": "Ui",
+      "description": "Review 9 node(s) in the Ui layer.",
+      "nodeIds": [
+        "code-mod-kindex-tools-018aabafc66d",
+        "code-mod-kindex-tools-133c01313857",
+        "code-mod-kindex-tools-351b54d5e204",
+        "code-mod-kindex-tools-41c4097a8fe3",
+        "code-mod-kindex-tools-5cd95420755f",
+        "code-mod-kindex-tools-95d291e9ce4c",
+        "code-mod-kindex-tools-9cb5a5ccfd50",
+        "code-mod-kindex-tools-ae339a739b16",
+        "code-mod-kindex-tools-cd1f25dcd866"
+      ]
+    }
+  ]
 }

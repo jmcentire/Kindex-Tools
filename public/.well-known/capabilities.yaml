@@ -3,7 +3,7 @@
 
 manifest:
   spec: "0.1"
-  updated: "2026-06-12T00:00:00Z"
+  updated: "2026-07-02T00:00:00Z"
   canonical: "https://perardua.dev/specs/capabilities"
 
 domain:
@@ -11,9 +11,10 @@ domain:
   url: "https://kindex.tools"
   description: >
     Persistent knowledge graph for Claude Code, Codex, Gemini CLI, Google
-    Antigravity, OpenCode, Cursor, and MCP-capable agents. Hybrid FTS5 + graph search, 52 MCP tools, 75 CLI commands,
+    Antigravity, OpenCode, Cursor, and MCP-capable agents. Hybrid FTS5 + graph search, 52 MCP tools, 80 CLI commands,
     lifecycle adapters, agent-specific tuning, throttled dream-cycle
-    consolidation, modes, tasks, reminders, and watch items. pip install kindex.
+    consolidation, modes, tasks, reminders with headless Codex/OpenCode wakeups,
+    and watch items. pip install kindex.
   contact: "jmc@cageandmirror.com"
   tos: "/tos"
   privacy: "/privacy"
@@ -37,4 +38,24 @@ read:
       format: text/html
     cache:
       ttl: 604800
+      signal: stable
+
+  - id: human-guide
+    path: /human-guide.md
+    description: "Human setup guide for installation, agent wiring, reminders, and release-surface checks"
+    auth: public
+    response:
+      format: text/markdown
+    cache:
+      ttl: 86400
+      signal: stable
+
+  - id: agent-guide
+    path: /mcp-agent-guide.md
+    description: "AI/MCP agent operating guide for proactive Kindex use"
+    auth: public
+    response:
+      format: text/markdown
+    cache:
+      ttl: 86400
       signal: stable

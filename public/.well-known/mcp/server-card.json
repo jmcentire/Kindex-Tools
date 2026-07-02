@@ -2,12 +2,14 @@
   "$schema": "https://modelcontextprotocol.io/schemas/server-card.json",
   "serverInfo": {
     "name": "kindex",
-    "version": "0.25.0",
+    "version": "0.27.1",
     "title": "Kindex",
-    "description": "Persistent knowledge graph for Claude Code, Codex, Gemini CLI, Google Antigravity, OpenCode, Cursor, and other AI-assisted workflows. Hybrid FTS5 + graph retrieval, context tiers, operational guardrails, session tags, reminders, agent-specific configuration, lifecycle adapters, dream-cycle consolidation, git-tracked .kin project context, and opt-in work policy enforcement.",
+    "description": "Persistent knowledge graph for Claude Code, Codex, Gemini CLI, Google Antigravity, OpenCode, Cursor, and other AI-assisted workflows. Hybrid FTS5 + graph retrieval, context tiers, operational guardrails, session tags, reminders with headless Codex/OpenCode wakeups, agent-specific configuration, lifecycle adapters, dream-cycle consolidation, git-tracked .kin project context, and opt-in work policy enforcement.",
     "homepage": "https://kindex.tools",
+    "mirror": "https://jmcentire.github.io/kindex/",
     "repository": "https://github.com/jmcentire/kindex",
-    "documentation": "https://kindex.tools/llms-full.txt",
+    "documentation": "https://kindex.tools/mcp-agent-guide.md",
+    "humanGuide": "https://kindex.tools/human-guide.md",
     "license": "MIT",
     "vendor": {
       "name": "Jeremy McEntire",
@@ -16,7 +18,7 @@
   },
   "transport": {
     "type": "stdio",
-    "note": "Kindex runs locally over stdio. Install via `pip install kindex[mcp]` and register `kin-mcp` with your MCP client. No public HTTP transport is exposed."
+    "note": "Kindex runs locally over stdio. Install with `pip install kindex[mcp]`, `uv tool install kindex[mcp]`, or `uvx --from kindex[mcp] kin-mcp`, then register `kin-mcp` with your MCP client. No public HTTP transport is exposed."
   },
   "install": {
     "pypi": "kindex[mcp]",
@@ -30,215 +32,68 @@
     }
   },
   "capabilities": {
+    "summary": [
+      "Hybrid FTS5 + graph search",
+      "Tier-budgeted context injection",
+      "Knowledge capture, edit, supersede, learn, and linking",
+      "Session tags and durable tasks",
+      "Multi-agent coordination, advisory locks, standing messages, and watches",
+      "Time-based reminders with shell actions, Claude instructions, and headless Codex/OpenCode wakeups",
+      "Mode primers, graph health, analytics, imports, exports, and ingestion adapters"
+    ],
     "tools": [
-      {
-        "name": "search",
-        "description": "Hybrid FTS5 + graph search over the knowledge graph."
-      },
-      {
-        "name": "add",
-        "description": "Capture a node with type (concept, decision, constraint, directive, question, skill, watch, checkpoint)."
-      },
-      {
-        "name": "edit",
-        "description": "Correct or extend an existing node according to its edit policy."
-      },
-      {
-        "name": "supersede",
-        "description": "Replace an additive node while preserving history with a supersedes edge."
-      },
-      {
-        "name": "context",
-        "description": "Return a tier-budgeted context block for injection."
-      },
-      {
-        "name": "show",
-        "description": "Full details of a node including edges and provenance."
-      },
-      {
-        "name": "ask",
-        "description": "Classified question answering with LLM or context-only mode."
-      },
-      {
-        "name": "learn",
-        "description": "Bulk-extract concepts from long text."
-      },
-      {
-        "name": "link",
-        "description": "Create a weighted edge between two nodes."
-      },
-      {
-        "name": "list_nodes",
-        "description": "List nodes filtered by type, tag, audience, or owner."
-      },
-      {
-        "name": "status",
-        "description": "Graph health and active operational nodes."
-      },
-      {
-        "name": "suggest",
-        "description": "Bridge-opportunity suggestions between disconnected clusters."
-      },
-      {
-        "name": "graph_stats",
-        "description": "Nodes, edges, density, components, average degree."
-      },
-      {
-        "name": "graph_heal",
-        "description": "Diagnose graph health: orphans, components, weak nodes, bridge edges."
-      },
-      {
-        "name": "graph_merge",
-        "description": "Merge two nodes with edge reconciliation."
-      },
-      {
-        "name": "dream",
-        "description": "Consolidation cycle: fuzzy dedup, suggestion auto-apply, domain edge strengthening."
-      },
-      {
-        "name": "changelog",
-        "description": "What changed in the graph over a time window."
-      },
-      {
-        "name": "ingest",
-        "description": "Ingest from projects, sessions, files, commits, github, linear, or code."
-      },
-      {
-        "name": "tag_start",
-        "description": "Start a named session tag."
-      },
-      {
-        "name": "tag_update",
-        "description": "Update the active session tag (focus, remaining, segment, end)."
-      },
-      {
-        "name": "tag_resume",
-        "description": "Resume a previous session tag \u2014 returns a context block."
-      },
-      {
-        "name": "task_add",
-        "description": "Create a task linked to related concepts."
-      },
-      {
-        "name": "task_done",
-        "description": "Mark a task complete."
-      },
-      {
-        "name": "task_list",
-        "description": "List open tasks, optionally filtered."
-      },
-      {
-        "name": "task_claim",
-        "description": "Claim a task for an agent with an expiry."
-      },
-      {
-        "name": "task_release",
-        "description": "Release or override a task claim."
-      },
-      {
-        "name": "coord_start",
-        "description": "Start a short-lived agent coordination conversation."
-      },
-      {
-        "name": "coord_join",
-        "description": "Join a coordination conversation and get a read cursor."
-      },
-      {
-        "name": "coord_post",
-        "description": "Post a coordination message."
-      },
-      {
-        "name": "coord_read",
-        "description": "Read coordination messages since a cursor."
-      },
-      {
-        "name": "coord_attach",
-        "description": "Attach a graph node as a shared coordination resource."
-      },
-      {
-        "name": "coord_inject",
-        "description": "Set, clear, or list standing messages for coordination members."
-      },
-      {
-        "name": "coord_list",
-        "description": "List coordination conversations."
-      },
-      {
-        "name": "coord_end",
-        "description": "End a coordination conversation with an optional summary."
-      },
-      {
-        "name": "lock_acquire",
-        "description": "Acquire an advisory lock on a node."
-      },
-      {
-        "name": "lock_release",
-        "description": "Release an advisory lock on a node."
-      },
-      {
-        "name": "watch_add",
-        "description": "Flag something for ongoing attention with owner and expiry."
-      },
-      {
-        "name": "watch_list",
-        "description": "List active watches."
-      },
-      {
-        "name": "watch_resolve",
-        "description": "Resolve a watch."
-      },
-      {
-        "name": "remind_create",
-        "description": "Create a reminder with optional shell action or agent instructions."
-      },
-      {
-        "name": "remind_list",
-        "description": "List pending reminders."
-      },
-      {
-        "name": "remind_snooze",
-        "description": "Snooze a reminder by duration."
-      },
-      {
-        "name": "remind_done",
-        "description": "Mark a reminder complete."
-      },
-      {
-        "name": "remind_check",
-        "description": "Check for due reminders."
-      },
-      {
-        "name": "remind_exec",
-        "description": "Execute a reminder's action."
-      },
-      {
-        "name": "mode_activate",
-        "description": "Activate a conversation mode \u2014 emits the priming artifact."
-      },
-      {
-        "name": "mode_list",
-        "description": "List available modes."
-      },
-      {
-        "name": "mode_show",
-        "description": "Show a mode's primer, boundary, and permissions."
-      },
-      {
-        "name": "mode_create",
-        "description": "Create a new conversation mode."
-      },
-      {
-        "name": "mode_export",
-        "description": "Export a mode (PII-stripped)."
-      },
-      {
-        "name": "mode_import",
-        "description": "Import a mode from JSON."
-      },
-      {
-        "name": "mode_seed",
-        "description": "Seed the five default modes (collaborate, code, create, research, chat)."
-      }
+      "search",
+      "add",
+      "edit",
+      "supersede",
+      "context",
+      "show",
+      "ask",
+      "learn",
+      "link",
+      "list_nodes",
+      "status",
+      "suggest",
+      "graph_stats",
+      "graph_heal",
+      "graph_merge",
+      "dream",
+      "changelog",
+      "ingest",
+      "tag_start",
+      "tag_update",
+      "tag_resume",
+      "task_add",
+      "task_done",
+      "task_list",
+      "task_claim",
+      "task_release",
+      "coord_start",
+      "coord_join",
+      "coord_post",
+      "coord_read",
+      "coord_attach",
+      "coord_inject",
+      "coord_list",
+      "coord_end",
+      "lock_acquire",
+      "lock_release",
+      "watch_add",
+      "watch_list",
+      "watch_resolve",
+      "remind_create",
+      "remind_list",
+      "remind_snooze",
+      "remind_done",
+      "remind_check",
+      "remind_exec",
+      "mode_activate",
+      "mode_list",
+      "mode_show",
+      "mode_create",
+      "mode_export",
+      "mode_import",
+      "mode_seed"
     ],
     "resources": [],
     "prompts": []
@@ -246,7 +101,9 @@
   "links": {
     "llms.txt": "https://kindex.tools/llms.txt",
     "llmsFull": "https://kindex.tools/llms-full.txt",
-    "agentSkills": "https://kindex.tools/.well-known/agent-skills/index.json",
-    "registry": "https://github.com/jmcentire/kindex/blob/main/server.json"
+    "humanGuide": "https://kindex.tools/human-guide.md",
+    "agentGuide": "https://kindex.tools/mcp-agent-guide.md",
+    "registry": "https://github.com/jmcentire/kindex/blob/main/server.json",
+    "githubPages": "https://jmcentire.github.io/kindex/"
   }
 }

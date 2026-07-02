@@ -1,8 +1,321 @@
 {
-  "domains": [],
-  "node_count": 0,
-  "nodes": [],
+  "domains": [
+    "astro",
+    "code",
+    "javascript",
+    "typescript"
+  ],
+  "node_count": 28,
+  "nodes": [
+    {
+      "domains": [
+        "astro",
+        "code"
+      ],
+      "id": "code-mod-kindex-tools-018aabafc66d",
+      "title": "src/pages/privacy.astro",
+      "type": "artifact",
+      "updated_at": "2026-07-01T20:38:44",
+      "weight": 0.5
+    },
+    {
+      "domains": [
+        "code",
+        "typescript"
+      ],
+      "id": "code-mod-kindex-tools-133c01313857",
+      "title": "src/components/ContextTiers.tsx",
+      "type": "artifact",
+      "updated_at": "2026-07-01T20:38:44",
+      "weight": 0.5
+    },
+    {
+      "domains": [
+        "code",
+        "typescript"
+      ],
+      "id": "code-mod-kindex-tools-248adfc01eb4",
+      "title": "shared/schema.ts",
+      "type": "artifact",
+      "updated_at": "2026-03-24T01:51:32",
+      "weight": 0.01
+    },
+    {
+      "domains": [
+        "code",
+        "typescript"
+      ],
+      "id": "code-mod-kindex-tools-351b54d5e204",
+      "title": "src/components/InstallTabs.tsx",
+      "type": "artifact",
+      "updated_at": "2026-07-01T20:38:44",
+      "weight": 0.5
+    },
+    {
+      "domains": [
+        "code",
+        "typescript"
+      ],
+      "id": "code-mod-kindex-tools-38b257e77e08",
+      "title": "client/src/lib/utils.ts",
+      "type": "artifact",
+      "updated_at": "2026-03-22T20:04:24",
+      "weight": 0.0109
+    },
+    {
+      "domains": [
+        "code",
+        "typescript"
+      ],
+      "id": "code-mod-kindex-tools-4174db2b5432",
+      "title": "client/src/lib/queryClient.ts",
+      "type": "artifact",
+      "updated_at": "2026-03-22T20:04:24",
+      "weight": 0.0109
+    },
+    {
+      "domains": [
+        "code",
+        "typescript"
+      ],
+      "id": "code-mod-kindex-tools-41c4097a8fe3",
+      "title": "src/components/TerminalBlock.tsx",
+      "type": "artifact",
+      "updated_at": "2026-07-01T20:38:44",
+      "weight": 0.5
+    },
+    {
+      "domains": [
+        "code",
+        "typescript"
+      ],
+      "id": "code-mod-kindex-tools-5cd95420755f",
+      "title": "src/components/ThemeToggle.tsx",
+      "type": "artifact",
+      "updated_at": "2026-07-01T20:38:44",
+      "weight": 0.5
+    },
+    {
+      "domains": [
+        "astro",
+        "code"
+      ],
+      "id": "code-mod-kindex-tools-621c0d4e1d79",
+      "title": "src/layouts/BaseLayout.astro",
+      "type": "artifact",
+      "updated_at": "2026-07-01T20:38:44",
+      "weight": 0.5
+    },
+    {
+      "domains": [
+        "code",
+        "typescript"
+      ],
+      "id": "code-mod-kindex-tools-6af4f8e34285",
+      "title": "server/storage.ts",
+      "type": "artifact",
+      "updated_at": "2026-03-24T01:51:32",
+      "weight": 0.01
+    },
+    {
+      "domains": [
+        "code",
+        "typescript"
+      ],
+      "id": "code-mod-kindex-tools-786114c6ebf9",
+      "title": "server/index.ts",
+      "type": "artifact",
+      "updated_at": "2026-03-24T01:51:32",
+      "weight": 0.01
+    },
+    {
+      "domains": [
+        "code",
+        "typescript"
+      ],
+      "id": "code-mod-kindex-tools-8f5152cdb50c",
+      "title": "script/build.ts",
+      "type": "artifact",
+      "updated_at": "2026-03-22T20:04:24",
+      "weight": 0.0109
+    },
+    {
+      "domains": [
+        "astro",
+        "code"
+      ],
+      "id": "code-mod-kindex-tools-95d291e9ce4c",
+      "title": "src/pages/index.astro",
+      "type": "artifact",
+      "updated_at": "2026-07-01T20:38:44",
+      "weight": 0.5
+    },
+    {
+      "domains": [
+        "code",
+        "typescript"
+      ],
+      "id": "code-mod-kindex-tools-9cb5a5ccfd50",
+      "title": "src/components/CommandsTabs.tsx",
+      "type": "artifact",
+      "updated_at": "2026-07-01T20:38:44",
+      "weight": 0.5
+    },
+    {
+      "domains": [
+        "code",
+        "typescript"
+      ],
+      "id": "code-mod-kindex-tools-a063e361b470",
+      "title": "server/routes.ts",
+      "type": "artifact",
+      "updated_at": "2026-03-24T01:51:32",
+      "weight": 0.01
+    },
+    {
+      "domains": [
+        "code",
+        "typescript"
+      ],
+      "id": "code-mod-kindex-tools-ae339a739b16",
+      "title": "src/components/MobileNav.tsx",
+      "type": "artifact",
+      "updated_at": "2026-07-01T20:38:44",
+      "weight": 0.5
+    },
+    {
+      "domains": [
+        "code",
+        "typescript"
+      ],
+      "id": "code-mod-kindex-tools-b4ef2821711a",
+      "title": "client/src/hooks/use-toast.ts",
+      "type": "artifact",
+      "updated_at": "2026-03-22T20:04:24",
+      "weight": 0.0109
+    },
+    {
+      "domains": [
+        "code",
+        "typescript"
+      ],
+      "id": "code-mod-kindex-tools-cb9e99f67748",
+      "title": "server/static.ts",
+      "type": "artifact",
+      "updated_at": "2026-03-22T20:04:24",
+      "weight": 0.0109
+    },
+    {
+      "domains": [
+        "code",
+        "typescript"
+      ],
+      "id": "code-mod-kindex-tools-cd1f25dcd866",
+      "title": "src/components/AnimatedSection.tsx",
+      "type": "artifact",
+      "updated_at": "2026-07-01T20:38:44",
+      "weight": 0.5
+    },
+    {
+      "domains": [
+        "code",
+        "javascript"
+      ],
+      "id": "code-mod-kindex-tools-e0f0c5adbe0b",
+      "title": "astro.config.mjs",
+      "type": "artifact",
+      "updated_at": "2026-07-01T20:38:44",
+      "weight": 0.5
+    },
+    {
+      "domains": [
+        "code",
+        "typescript"
+      ],
+      "id": "code-mod-kindex-tools-eeb750dacd75",
+      "title": "server/vite.ts",
+      "type": "artifact",
+      "updated_at": "2026-03-24T01:51:32",
+      "weight": 0.01
+    },
+    {
+      "domains": [
+        "code",
+        "typescript"
+      ],
+      "id": "code-sym-kindex-tools-3b0dabcf6d81",
+      "title": "Props",
+      "type": "concept",
+      "updated_at": "2026-07-01T20:38:44",
+      "weight": 0.5
+    },
+    {
+      "domains": [
+        "code",
+        "typescript"
+      ],
+      "id": "code-sym-kindex-tools-55e5dc4730c9",
+      "title": "State",
+      "type": "concept",
+      "updated_at": "2026-03-22T20:04:24",
+      "weight": 0.0109
+    },
+    {
+      "domains": [
+        "code",
+        "typescript"
+      ],
+      "id": "code-sym-kindex-tools-576ea380d535",
+      "title": "TerminalLine",
+      "type": "concept",
+      "updated_at": "2026-07-01T20:38:44",
+      "weight": 0.5
+    },
+    {
+      "domains": [
+        "code",
+        "typescript"
+      ],
+      "id": "code-sym-kindex-tools-68f8123c8709",
+      "title": "MemStorage",
+      "type": "concept",
+      "updated_at": "2026-03-24T01:51:32",
+      "weight": 0.01
+    },
+    {
+      "domains": [
+        "code",
+        "typescript"
+      ],
+      "id": "code-sym-kindex-tools-8a1e23005eec",
+      "title": "TerminalBlockProps",
+      "type": "concept",
+      "updated_at": "2026-07-01T20:38:44",
+      "weight": 0.5
+    },
+    {
+      "domains": [
+        "code",
+        "typescript"
+      ],
+      "id": "code-sym-kindex-tools-b21d56212446",
+      "title": "IStorage",
+      "type": "concept",
+      "updated_at": "2026-03-24T01:51:32",
+      "weight": 0.01
+    },
+    {
+      "domains": [
+        "code",
+        "typescript"
+      ],
+      "id": "code-sym-kindex-tools-d3e6242a3e4a",
+      "title": "IncomingMessage",
+      "type": "concept",
+      "updated_at": "2026-03-24T01:51:32",
+      "weight": 0.01
+    }
+  ],
   "repo": "kindex-tools",
-  "source_updated_at": "",
   "version": 1
 }

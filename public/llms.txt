@@ -1,55 +1,45 @@
 # Kindex
 
-> The memory layer AI coding agents do not have. A persistent knowledge graph for AI-assisted workflows, distributed as an MCP server and standalone CLI. Indexes conversations, projects, and intellectual work so Claude Code, Codex, Gemini CLI, Google Antigravity, OpenCode, Cursor, and other MCP-capable agents never start a session blind.
+Kindex is a local-first persistent knowledge graph and MCP server for AI-assisted workflows. It helps Claude Code, Codex, Gemini CLI, Google Antigravity, OpenCode, Cursor, and other MCP-capable agents preserve durable project memory across sessions.
 
-Kindex is a weighted knowledge graph (SQLite + FTS5 + graph traversal) that captures not just what happened but what it means and how it connects. It ships as a free MCP plugin for Claude Code, Codex, Gemini CLI, Google Antigravity, OpenCode, Cursor, and other agents or a standalone `kin` CLI on PyPI.
+Core docs:
 
-## What Kindex is
+- Human setup guide: https://kindex.tools/human-guide.md
+- AI/MCP agent guide: https://kindex.tools/mcp-agent-guide.md
+- GitHub repo: https://github.com/jmcentire/kindex
+- PyPI package: https://pypi.org/project/kindex/
+- GitHub Pages mirror: https://jmcentire.github.io/kindex/
 
-- **MCP server**: `kin-mcp` exposes 52 tools to Claude Code, Codex, Gemini CLI, Google Antigravity, OpenCode, Cursor, and other MCP clients (search, add, edit, supersede, context, show, ask, learn, link, list_nodes, status, suggest, graph_stats, graph_heal, graph_merge, dream, changelog, ingest, tag_start, tag_update, tag_resume, task_add, task_done, task_list, task_claim, task_release, coord_start, coord_join, coord_post, coord_read, coord_attach, coord_inject, coord_list, coord_end, lock_acquire, lock_release, watch_add, watch_list, watch_resolve, remind_create, remind_list, remind_snooze, remind_done, remind_check, remind_exec, mode_activate, mode_list, mode_show, mode_create, mode_export, mode_import, mode_seed).
-- **CLI**: 75 `kin` subcommands for scripts, cron, lifecycle integration, and humans.
-- **Transport**: stdio (local). Package: `pip install kindex[mcp]`.
-- **Version**: 0.25.0. License: MIT. Repo: https://github.com/jmcentire/kindex.
-- **Claude Code setup**: `claude mcp add --scope user --transport stdio kindex -- kin-mcp`, `kin setup-claude-md --install`, and `kin setup-hooks`.
-- **Codex setup**: `kin setup-codex-mcp`, `kin setup-codex-hooks`, and `kin setup-agents-md --install --global`.
-- **Gemini CLI setup**: `kin setup-gemini-mcp` and `kin setup-gemini-md --install`.
-- **Google Antigravity setup**: `kin setup-antigravity-mcp`, `kin setup-antigravity-hooks`, and `kin setup-antigravity-md --install`.
-- **OpenCode setup**: `kin setup-opencode-mcp` and `kin setup-agents-md --install --global`.
-- **Cursor setup**: `kin setup-cursor-mcp` and `kin setup-cursor-rules --install`.
-- **Codex session ingest**: `kin ingest codex-sessions`.
-- **Agent tuning**: `kin agent-config show` and `kin agent-config set <key> <value>` support global defaults, agent defaults, and per-instance overrides for attention cadence/budgets, simulation checks, collaboration prompt cooldown, and lifecycle priming behavior.
-- **Project context**: `.kin/config`, `.kin/index.json`, and `.kin/code-map.json` are intended to ship with the repo. Local/private runtime state belongs in `~/.kindex` or ignored `.kin/local`, `.kin/cache`, `.kin/tmp`, `.kin/private`.
-- **Portable artifacts**: tracked `.kin` files must be self-contained and machine-portable. Code-map paths are repo-relative POSIX paths. Do not commit local filesystem pointers, secrets, private transcripts, or local-only report references into tracked artifacts.
-- **Work policy**: `kin policy check` reads opt-in policy from `.kin/config`. Linear enforcement only applies when `work_policy.linear.enabled: true`.
+Install:
 
-## AI operating contract
+```bash
+pip install 'kindex[mcp]'
+uv tool install 'kindex[mcp]'
+uvx --from 'kindex[mcp]' kin-mcp --help
+kin init
+```
 
-- Start meaningful work with `tag_start` or `tag_resume`, then `search`, `context`, or `ask`.
-- Use `task_add`, `task_list`, and `task_done` for durable work items. Do not rely on host-session-only task state for work that must survive the current conversation.
-- Search before `add`; prefer `edit` or `supersede` over duplicate nodes.
-- Capture decisions, constraints, questions, watches, and notable outputs while they are fresh, then link related nodes.
-- Treat tracked `.kin` files as shipped project state, not local cache.
-- If a generated artifact matters to future users or agents, make it repo-local, durable, and independently usable after a fresh clone.
-- If the host also exposes session-local task tools, use those only for temporary planning; durable tasks belong in Kindex.
-- Use `kin export` for audience-aware graph export and `kin export code-map` for current repo structure, code dependencies, layers, and repo-relative file paths.
+Agent setup:
 
-## Key capabilities
+```bash
+kin setup-codex-mcp
+kin setup-codex-hooks
+kin setup-agents-md --install --global
 
-- Hybrid retrieval: FTS5 BM25 + graph BFS + optional vectors, merged via Reciprocal Rank Fusion.
-- Five context tiers (full / abridged / summarized / executive / index) auto-selected by token budget -- your plugin does not eat the context window.
-- Node types for operational guardrails: `constraint` (blocks deploys), `directive` (soft rules), `watch` (attention flags), `checkpoint` (pre-flight).
-- Session tags track named work context across conversations. `tag start` / `tag update` / `tag segment` / `tag resume` / `tag end`.
-- Reminders with actionable shell commands or headless `claude -p` invocations.
-- Dream cycle: throttled post-session consolidation (fuzzy dedup, capped suggestion writes, suggestion auto-apply, edge strengthening).
-- `.kin/` inheritance chains: repo inherits from team, team inherits from org voice; repo-local policy can require active tags, Linear IDs, or git gates only when the repo opts in.
+kin setup-opencode-mcp
+kin setup-agents-md --install --global
+```
 
-## Links
+Reminder wakeups:
 
-- Homepage: https://kindex.tools
-- Source: https://github.com/jmcentire/kindex
-- Agent guide: https://github.com/jmcentire/kindex/blob/main/docs/mcp-agent-guide.md
-- PyPI: https://pypi.org/project/kindex/
-- MCP server card: https://kindex.tools/.well-known/mcp/server-card.json
-- Agent skills: https://kindex.tools/.well-known/agent-skills/index.json
-- Full docs (this site, expanded): https://kindex.tools/llms-full.txt
-- Privacy: https://kindex.tools/privacy/
+```bash
+kin setup-cron
+kin remind create "Continue rollout check" --at "in 10 minutes" \
+  --wake codex --session last --cwd "$PWD" \
+  --instructions "Check the rollout and fix any new failures."
+kin remind create "Continue OpenCode build" --at "in 10 minutes" \
+  --wake opencode --session last --cwd "$PWD" --wake-agent build \
+  --instructions "Continue the build triage."
+```
+
+Boundary: `remind_create` records a reminder. Due reminders fire only when `kin remind check`, `kin remind exec`, `kin cron`, or an installed `kin setup-cron` schedule runs. Codex/OpenCode wakeups start headless turns from that checker context; Kindex does not interrupt an idle interactive TUI by itself.

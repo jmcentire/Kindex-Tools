@@ -26,6 +26,16 @@
           "href": "https://kindex.tools/llms.txt",
           "type": "text/markdown",
           "title": "Kindex LLM Summary"
+        },
+        {
+          "href": "https://kindex.tools/human-guide.md",
+          "type": "text/markdown",
+          "title": "Kindex Human Guide"
+        },
+        {
+          "href": "https://kindex.tools/mcp-agent-guide.md",
+          "type": "text/markdown",
+          "title": "Kindex MCP Agent Guide"
         }
       ],
       "sitemap": [

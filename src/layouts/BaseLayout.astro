@@ -6,7 +6,7 @@ interface Props {
 
 const {
   title = "Kindex — The Memory Layer AI Coding Agents Need | Persistent Knowledge Graph for AI Workflows",
-  description = "A persistent knowledge graph for Claude Code, Codex, Gemini CLI, Antigravity, OpenCode, Cursor, and other AI-assisted workflows. 52 MCP tools, 75 CLI commands, 5 context tiers.",
+  description = "A persistent knowledge graph for Claude Code, Codex, Gemini CLI, Antigravity, OpenCode, Cursor, and other AI-assisted workflows. 52 MCP tools, 80 CLI commands, reminders with Codex/OpenCode wakeups, 5 context tiers.",
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -41,7 +41,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "name": "Kindex",
-      "description": "A persistent knowledge graph for AI-assisted workflows across Claude Code, Codex, Gemini CLI, Antigravity, OpenCode, Cursor, and other MCP clients.",
+      "description": "A persistent knowledge graph for AI-assisted workflows across Claude Code, Codex, Gemini CLI, Antigravity, OpenCode, Cursor, and other MCP clients, including reminders with headless Codex/OpenCode wakeups.",
       "url": "https://kindex.tools",
       "author": {
         "@type": "Person",
@@ -86,7 +86,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
                     return {
                       server: 'kindex',
                       transport: 'stdio',
-                      install: 'pip install kindex',
+                      install: 'pip install kindex[mcp]',
                       server_card: '/.well-known/mcp/server-card.json'
                     };
                   }

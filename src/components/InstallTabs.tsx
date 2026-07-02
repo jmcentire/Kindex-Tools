@@ -207,7 +207,7 @@ export default function InstallTabs() {
       {active === "cli" && (
         <div className="space-y-4">
           <p className="text-sm text-secondary">
-            Standalone CLI with 75 commands. Install however you prefer; combine extras for LLM-powered extraction, vectors, and reminders.
+            Standalone CLI with 80 commands. Install however you prefer; combine extras for LLM-powered extraction, vectors, and reminders.
           </p>
           <TerminalBlock
             title="CLI Installation"
