@@ -1,0 +1,33 @@
+# The Dockerfile is multi-stage and installs its own dependencies:
+#   COPY package*.json ./  ->  RUN npm ci  ->  COPY . .
+# so the host's node_modules is never needed. Shipping it was not just 223 MB
+# of wasted upload on every deploy — `COPY . .` layered macOS arm64 native
+# binaries (lightningcss, @rolldown, @rollup, @tailwindcss/oxide, @img/sharp)
+# on top of the linux ones npm ci had just installed. That built successfully
+# only because the linux binaries survived the overlay; it is a broken build
+# waiting for the day one of them resolves the wrong way, and it would only
+# reproduce on an arm64 Mac.
+node_modules
+
+# Build output is regenerated inside the builder by `npm run build`.
+dist
+.astro
+
+# Never needs to reach the builder. .kin carries a SQLite code-graph store
+# that has no business inside a static-site image.
+.kin
+.git
+.github
+.gitignore
+.dockerignore
+README.md
+fly.toml
+
+# Local noise.
+.DS_Store
+*.log
+npm-debug.log*
+.env
+.env.*
+.vscode
+.idea

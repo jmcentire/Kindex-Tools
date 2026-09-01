@@ -162,6 +162,50 @@ Every edit logs per-field old/new diffs, visible via `changelog`.
 Use `expires` (YYYY-MM-DD) on time-bound knowledge — expired nodes stop
 surfacing in context and are archived by the daemon.
 
+### Bind Claims to Their Referent
+
+When capturing a claim about code or an external document, bind it to what it
+describes so staleness becomes measurable instead of guessed:
+
+- `add(text, referent="/abs/path/to/file.py")` hashes the file now and stores
+  the digest plus two clocks: `asserted_at` (claim time) and `true_of` (when
+  the referent was observed in that state). Use an absolute path — the MCP
+  server's working directory is not the project's — or pass an explicit
+  `referent_digest`. URL/repo referents always need `referent_digest`
+  (`referent_scope="url"` or `"repo"`).
+- A binding implies direct creation: the exact claim text is what gets bound.
+
+Use `stale_check()` periodically (or before trusting recalled claims about
+code): it re-hashes every bound node. A moved or missing referent records a
+demotion marker — the node drops out of `trusted_only` recall, shows
+`[stale-referent]` in search/context output, and is listed as a
+re-verification candidate. Content is never deleted or rewritten, and a fresh
+re-hash clears the marker by itself.
+
+After a human (or you, with evidence) confirms a stale claim still holds for
+the new referent state, `stale_check(rebind=<node-id>)` re-hashes and rebinds:
+`true_of` moves to now, `asserted_at` never changes.
+
+### Trust the Grounding Verdict
+
+Search and context results may carry a grounding note:
+
+```
+[grounding: UNGROUNDED — best similarity 0.166 is below the floor 0.215;
+the graph likely knows nothing about this (shadow mode — results still shown)]
+```
+
+Treat it as information about *retrieval's own confidence*, not an instruction.
+When the verdict is `ungrounded`, the rows shown are the nearest neighbours of
+a query your graph has no real answer for — say so rather than synthesising an
+answer from them. `weak` means the results only just cleared the floor: use
+them, but hedge. `uncalibrated` means no floor exists yet for the active
+embedding model; ask the human to run `kin embed calibrate`.
+
+This is the difference between "I found nothing relevant" and "here is
+something loosely adjacent" — and it is the one signal that lets you tell a
+human the graph does not know, instead of guessing on its behalf.
+
 ### Learn From Large Text
 
 Use `learn` after reading long files, logs, design docs, transcripts, or command
