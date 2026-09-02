@@ -57,7 +57,7 @@ import CommandsTabs from "../components/CommandsTabs.tsx";
 
     <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
       <div class="flex items-center justify-center gap-2 mb-8">
-        <span class="inline-flex items-center px-3 py-1 text-xs font-mono rounded-full border border-border bg-card text-secondary">v0.34.0</span>
+        <span class="inline-flex items-center px-3 py-1 text-xs font-mono rounded-full border border-border bg-card text-secondary">v0.35.0</span>
         <span class="inline-flex items-center px-3 py-1 text-xs rounded-full border border-border bg-card text-secondary">1797 tests passing</span>
         <span class="inline-flex items-center px-3 py-1 text-xs rounded-full border border-border bg-card text-secondary">MIT License</span>
       </div>
@@ -164,6 +164,15 @@ import CommandsTabs from "../components/CommandsTabs.tsx";
             <svg class="w-6 h-6 mb-4 text-purple" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M8 11h6"/></svg>
             <h3 class="text-base font-semibold mb-2 text-foreground">It Can Say "I Don't Know"</h3>
             <p class="text-sm text-secondary leading-relaxed">Vector search returns the nearest neighbours for any question, however unrelated. Kindex calibrates a similarity floor against your own corpus and labels every result grounded, weak, or ungrounded — so an agent can tell you the graph has no answer instead of dressing up whatever came back closest.</p>
+          </div>
+        </AnimatedSection>
+
+        <!-- Every Agent Starts Primed -->
+        <AnimatedSection client:visible delay={0.23}>
+          <div class="p-6 h-full border border-border bg-card rounded-xl hover:border-border-bright transition-colors">
+            <svg class="w-6 h-6 mb-4 text-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-3 7h5l-3 7"/><circle cx="12" cy="12" r="9"/></svg>
+            <h3 class="text-base font-semibold mb-2 text-foreground">Every Agent Starts Primed</h3>
+            <p class="text-sm text-secondary leading-relaxed">Claude Code, Codex, and OpenCode all get a SessionStart hook that runs <code>kin prime</code> in the working directory — so each session opens already aware of what the graph knows about the repo it's in, and pointed at the project's own <code>.kin/</code>. Hooks run where the work is; an MCP server can't see your cwd.</p>
           </div>
         </AnimatedSection>
 
