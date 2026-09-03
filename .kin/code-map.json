@@ -1,14 +1,15 @@
 {
   "version": "1.0.0",
   "project": {
-    "name": "kindex-tools",
-    "description": "Code map exported from Kindex for kindex-tools.",
+    "name": "Kindex-Tools",
+    "description": "Code map exported from Kindex for Kindex-Tools.",
     "languages": [
+      "JavaScript",
       "TypeScript"
     ],
     "frameworks": [],
-    "analyzedAt": "2026-08-18T15:56:27-05:00",
-    "gitCommitHash": "6fdb4d4da8a00ec4ea7799cc098774700e9d436f"
+    "analyzedAt": "2026-09-02T22:06:33-05:00",
+    "gitCommitHash": "17d70023e58dcc20912081ddddcad08ec6e47059"
   },
   "nodes": [
     {
@@ -97,6 +98,23 @@
       }
     },
     {
+      "id": "code-mod-kindex-tools-12c029af12d2",
+      "type": "file",
+      "name": "scripts/check-release-metadata.mjs",
+      "filePath": "scripts/check-release-metadata.mjs",
+      "summary": "Language: JavaScript | Path: scripts/check-release-metadata.mjs | ~65 lines ## Functions - read(path)",
+      "tags": [
+        "code",
+        "javascript"
+      ],
+      "complexity": 1,
+      "languageNotes": {
+        "language": "JavaScript",
+        "kindexType": "artifact",
+        "toolTier": "A"
+      }
+    },
+    {
       "id": "code-mod-kindex-tools-cb9e99f67748",
       "type": "file",
       "name": "server/static.ts",
@@ -143,6 +161,7 @@
       "name": "Core",
       "description": "Kindex-inferred core layer.",
       "nodeIds": [
+        "code-mod-kindex-tools-12c029af12d2",
         "code-mod-kindex-tools-38b257e77e08",
         "code-mod-kindex-tools-4174db2b5432",
         "code-mod-kindex-tools-b4ef2821711a",
@@ -170,8 +189,9 @@
     {
       "order": 1,
       "title": "Core",
-      "description": "Review 4 node(s) in the Core layer.",
+      "description": "Review 5 node(s) in the Core layer.",
       "nodeIds": [
+        "code-mod-kindex-tools-12c029af12d2",
         "code-mod-kindex-tools-38b257e77e08",
         "code-mod-kindex-tools-4174db2b5432",
         "code-mod-kindex-tools-b4ef2821711a",

@@ -5,7 +5,7 @@
     "javascript",
     "typescript"
   ],
-  "node_count": 20,
+  "node_count": 21,
   "nodes": [
     {
       "domains": [
@@ -17,6 +17,17 @@
       "type": "artifact",
       "updated_at": "2026-07-01T20:38:44",
       "weight": 0.01
+    },
+    {
+      "domains": [
+        "code",
+        "javascript"
+      ],
+      "id": "code-mod-kindex-tools-12c029af12d2",
+      "title": "scripts/check-release-metadata.mjs",
+      "type": "artifact",
+      "updated_at": "2026-09-02T22:06:39",
+      "weight": 0.5
     },
     {
       "domains": [
@@ -37,7 +48,7 @@
       "id": "code-mod-kindex-tools-351b54d5e204",
       "title": "src/components/InstallTabs.tsx",
       "type": "artifact",
-      "updated_at": "2026-08-18T15:51:37",
+      "updated_at": "2026-09-02T22:06:39",
       "weight": 0.01
     },
     {
@@ -92,7 +103,7 @@
       "id": "code-mod-kindex-tools-621c0d4e1d79",
       "title": "src/layouts/BaseLayout.astro",
       "type": "artifact",
-      "updated_at": "2026-07-01T20:38:44",
+      "updated_at": "2026-09-02T22:06:39",
       "weight": 0.01
     },
     {
@@ -114,7 +125,7 @@
       "id": "code-mod-kindex-tools-95d291e9ce4c",
       "title": "src/pages/index.astro",
       "type": "artifact",
-      "updated_at": "2026-08-18T15:51:37",
+      "updated_at": "2026-09-02T22:06:39",
       "weight": 0.01
     },
     {
@@ -229,5 +240,5 @@
     }
   ],
   "repo": "kindex-tools",
-  "version": 1
+  "version": 2
 }
