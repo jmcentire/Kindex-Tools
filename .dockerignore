@@ -26,7 +26,6 @@ dist
 .github
 .gitignore
 .dockerignore
-README.md
 fly.toml
 
 # Local noise.

@@ -56,7 +56,7 @@ export default function InstallTabs() {
               { type: "prompt", text: "$ kin setup-hooks" },
               { type: "blank", text: "" },
               { type: "output", text: "Kindex initialized. Knowledge graph ready." },
-              { type: "output", text: "60 MCP tools available:" },
+              { type: "output", text: "61 MCP tools available:" },
               { type: "output", text: "  search, add, edit, supersede, context, show, ask, learn," },
               { type: "output", text: "  candidate_*, verify, invalidate, tag_*, task_*, coord_*," },
               { type: "output", text: "  link, list_nodes, status, suggest, graph_stats, graph_heal," },
